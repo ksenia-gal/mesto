@@ -1,0 +1,7 @@
+.header__logo {
+    max-width: 142px;
+    max-height: 33px;
+    display: flex;
+    justify-content: flex-start;
+    outline: 2px red solid;
+}
