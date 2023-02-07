@@ -1,0 +1,11 @@
+.profile__info {
+    max-width: 336px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    grid-template-rows: 1fr 18px;
+    column-gap: 18px;
+    row-gap: 16px;
+    margin: 22px 244px 25px 30px;
+    outline: 2px solid red;
+}

@@ -23,15 +23,17 @@
       </header>
       <main class="content">
         <section class="profile">
-            <img
-            src="./images/image.jpg"
-            alt="Фотография Кусто"
-            class="profile__avatar"
-          > 
+          <div class="profile__avatar">
+                           <img
+                src="./images/Avatar.png"
+                alt="Фотография Кусто"
+                class="profile__image"
+              >              
+        </div>
           <div class="profile__info">
-            <h1 class="header__title">Жак-Ив Кусто</h1>
-            <h2 class="header__subtitle">Исследователь океана</h2>
-            <button name="edit-button" type="edit">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h2 class="profile__subtitle">Исследователь океана</h2>
+                      <button class="profile__edit-button">
                 <img
             src="./images/Vector-2.png"
             alt="Кнопка редактирования"
@@ -39,6 +41,125 @@
           >
             </button>
           </div>
-
+          <button class="profile__add-button"><img
+            src="./images/Vectoradd.png"
+            alt="Кнопка добавления"
+            class="add-button__image"
+          ></button>
+          <block class="popup">
+            <div class="popup__container">
+              <p class="popup__title">Редактировать профиль</p>
+              <button class="popup__save-button">
+                <p class="popup__text">Сохранить</p>
+              ></button>
+            </div>
+          </block>
+        </section>
+        <section class="elements">
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1088404-unsplash.png"
+            alt="Фотография монастыря"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Карачаевск</p>
+          <img
+            class="element__block-image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1404681-unsplash.png"
+            alt="Фотография горы Эльбрус"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Гора Эльбрус</p>
+          <img
+            class="block__image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1556355-unsplash.png"
+            alt="Фотография горы Домбай"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Домбай</p>
+          <img
+            class="block__image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1404681-unsplash.png"
+            alt="Фотография горы Эльбрус"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Гора Эльбрус</p>
+          <img
+            class="block__image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1556355-unsplash.png"
+            alt="Фотография горы Домбай"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Домбай</p>
+          <img
+            class="block__image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+          <article class="element">
+            <img
+            class="element__image"
+            src="./images/kirill-pershin-1088404-unsplash.png"
+            alt="Фотография монастыря"
+            data-type="auto"
+          >
+          <div class="element__block">
+          <p class="element__title">Карачаево-Ч...</p>
+          <img
+            class="block__image"
+            src="./images/heart.svg"
+            alt="Изображение сердца"
+            data-type="auto"
+          >
+        </div>
+          </article>
+        </section>
+        <footer class="footer">&copy; 2020 Mesto Russia
+        </footer>
     </body>
     </html>
