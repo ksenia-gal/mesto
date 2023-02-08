@@ -9,3 +9,9 @@
     border-bottom: 1px solid #545454;
     outline: 2px solid red;
   }
+
+  @media screen and (max-width: 976px) {
+    .header {
+      max-width: 90%;
+    }
+  }

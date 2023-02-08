@@ -9,4 +9,5 @@
     outline: 2px red solid;
     display: flex;
     align-self: flex-end;
+    justify-content: center;
 }

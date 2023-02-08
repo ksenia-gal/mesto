@@ -1,0 +1,8 @@
+.element__like-button {
+    border: none;
+    max-width: 22px;
+    max-height: 19px;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
+}

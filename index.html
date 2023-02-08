@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
-
   <body class="page">
     <header class="header">
         <img
-        src="./images/Vector.png"
+        src="./images/header__logo.svg"
         alt="Логотип заголовка"
         class="header__logo"
       >
@@ -37,33 +36,17 @@
                 <img
             src="./images/Vector-2.png"
             alt="Кнопка редактирования"
-            class="edit-button__image"
+            class="profile__edit-icon"
           >
             </button>
           </div>
           <button class="profile__add-button"><img
             src="./images/Vectoradd.png"
-            alt="Кнопка добавления"
+            alt="Значок плюса"
             class="add-button__image"
           ></button>
         </section>
-        <section class="popup">
-            <div class="popup__container">
-              <p class="popup__title">Редактировать профиль</p>
-              <form class="form">
-                <fieldset class="form__full-name">
-                </fieldset>
-                <div class="form__line"></div>
-                <fieldset class="form__additional-information">
-                    <div class="form__line"></div>
-                    <fieldset class="form__handlers">
-                        <button class="popup__save-button">
-                        <p class="popup__text">Сохранить</p>
-                      </button></fieldset>
-                </fieldset>
-            </form> 
-            </div>
-          </section>
+        
         <section class="elements">
           <article class="element">
             <img
@@ -74,12 +57,14 @@
           >
           <div class="element__block">
           <p class="element__title">Карачаевск</p>
+          <button class="element__like-button">
           <img
-            class="element__block-image"
-            src="./images/heart.svg"
+            class="block__image"
+            src="./images/like-icon.png"
             alt="Изображение сердца"
             data-type="auto"
           >
+        </button>
         </div>
           </article>
           <article class="element">
@@ -91,12 +76,14 @@
           >
           <div class="element__block">
           <p class="element__title">Гора Эльбрус</p>
-          <img
-            class="block__image"
-            src="./images/heart.svg"
-            alt="Изображение сердца"
-            data-type="auto"
-          >
+          <button class="element__like-button">
+            <img
+              class="block__image"
+              src="./images/like-icon.png"
+              alt="Изображение сердца"
+              data-type="auto"
+            >
+          </button>
         </div>
           </article>
           <article class="element">
@@ -108,12 +95,14 @@
           >
           <div class="element__block">
           <p class="element__title">Домбай</p>
-          <img
-            class="block__image"
-            src="./images/heart.svg"
-            alt="Изображение сердца"
-            data-type="auto"
-          >
+          <button class="element__like-button">
+            <img
+              class="block__image"
+              src="./images/like-icon.png"
+              alt="Изображение сердца"
+              data-type="auto"
+            >
+          </button>
         </div>
           </article>
           <article class="element">
@@ -125,12 +114,14 @@
           >
           <div class="element__block">
           <p class="element__title">Гора Эльбрус</p>
-          <img
-            class="block__image"
-            src="./images/heart.svg"
-            alt="Изображение сердца"
-            data-type="auto"
-          >
+          <button class="element__like-button">
+            <img
+              class="block__image"
+              src="./images/like-icon.png"
+              alt="Изображение сердца"
+              data-type="auto"
+            >
+          </button>
         </div>
           </article>
           <article class="element">
@@ -142,12 +133,14 @@
           >
           <div class="element__block">
           <p class="element__title">Домбай</p>
-          <img
-            class="block__image"
-            src="./images/heart.svg"
-            alt="Изображение сердца"
-            data-type="auto"
-          >
+          <button class="element__like-button">
+            <img
+              class="block__image"
+              src="./images/like-icon.png"
+              alt="Изображение сердца"
+              data-type="auto"
+            >
+          </button>
         </div>
           </article>
           <article class="element">
@@ -159,16 +152,41 @@
           >
           <div class="element__block">
           <p class="element__title">Карачаево-Ч...</p>
+          <button class="element__like-button">
           <img
             class="block__image"
-            src="./images/heart.svg"
+            src="./images/like-icon.png"
             alt="Изображение сердца"
             data-type="auto"
           >
+        </button>
         </div>
           </article>
         </section>
         <footer class="footer">&copy; 2020 Mesto Russia
         </footer>
+        <section class="popup">
+          <div class="popup__container">
+            <p class="popup__title">Редактировать профиль</p>
+            <form class="form">
+              <fieldset class="form__full-name">
+              </fieldset>
+              <div class="form__line"></div>
+              <fieldset class="form__additional-information">
+                  </fieldset>
+                  <div class="form__line"></div>
+                      <button class="popup__save-button">
+                      <p class="popup__text">Сохранить</p>
+                    </button>
+          </form> 
+          <button class="popup__close-button">
+            <img
+          src="./images/Close Icon.png"
+          alt="Значок крестика"
+          class="popup__close-icon"
+        >
+          </button>
+          </div>
+        </section>
     </body>
     </html>

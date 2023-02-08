@@ -8,3 +8,7 @@ outline: 2px solid red;
 grid-row: 1;
 grid-column: 2;
 }
+
+.profile__edit-button:hover {
+    opacity: 0.6;
+    }

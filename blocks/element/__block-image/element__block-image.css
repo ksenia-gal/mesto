@@ -1,3 +1,8 @@
 .element__block-image {
-    
+    max-width: 22px;
+    max-height: 19px;
+    vertical-align: center;
+}
+.element__block-image:hover {
+    opacity: 0.5;
 }
