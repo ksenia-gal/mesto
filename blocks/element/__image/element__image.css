@@ -1,14 +1,18 @@
 .element__image {
   max-width: 282px;
   aspect-ratio: 1 / 1;
+  width: 100%;
   background: #c4c4c4;
   border-radius: 10px 10px 0 0;
+  object-fit: cover;
+  object-position: center;
   margin: 0;
   padding: 0;
 }
 
-@media screen and (max-width: 976px) {
+@media screen and (max-width: 836px) {
   .element__image {
-    width: 100%;
+    max-width: 242px;
   }
 }
+

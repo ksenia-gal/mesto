@@ -19,3 +19,10 @@
     row-gap: 18px;
   }
 }
+
+@media screen and (max-width: 836px) {
+  .elements {
+    column-gap: 13px;
+    row-gap: 16px;
+  }
+}

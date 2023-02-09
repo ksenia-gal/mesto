@@ -9,3 +9,15 @@
     margin: 22px 244px 25px 30px;
     outline: 2px solid red;
 }
+
+@media screen and (max-width: 1150px) {
+    .profile__info {
+        margin: 18px 180px 22px 25px;
+    }
+  }
+
+  @media screen and (max-width: 903px) {
+    .profile__info {
+        margin: 16px 80px 20px 21px;
+    }
+  }
