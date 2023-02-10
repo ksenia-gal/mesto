@@ -22,13 +22,11 @@
       </header>
       <main class="content">
         <section class="profile">
-          <div class="profile__avatar">
-                           <img
+          <img
                 src="./images/Avatar.png"
                 alt="Фотография Кусто"
-                class="profile__image"
-              >              
-        </div>
+                class="profile__avatar"
+              >    
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <h2 class="profile__subtitle">Исследователь океана</h2>
@@ -36,7 +34,7 @@
                 <img
             src="./images/Vector-2.png"
             alt="Кнопка редактирования"
-            class="profile__edit-icon"
+            class="edit-button__icon"
           >
             </button>
           </div>
@@ -47,7 +45,7 @@
           ></button>
         </section>
         
-        <section class="elements">
+        <section aria-label="Галерея" class="elements">
           <article class="element">
             <img
             class="element__image"
@@ -163,6 +161,7 @@
         </div>
           </article>
         </section>
+        </main>
         <footer class="footer">&copy; 2020 Mesto Russia
         </footer>
         <section class="popup">
@@ -176,15 +175,14 @@
                   </fieldset>
                   <div class="form__line"></div>
                       <button class="popup__save-button">
-                      <p class="popup__text">Сохранить</p>
+                      <div class="popup__text">Сохранить</div>
                     </button>
           </form> 
           <button class="popup__close-button">
             <img
           src="./images/Close Icon.png"
           alt="Значок крестика"
-          class="popup__close-icon"
-        >
+          class="popup__close-icon">
           </button>
           </div>
         </section>

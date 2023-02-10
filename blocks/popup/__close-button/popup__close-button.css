@@ -1,10 +1,10 @@
 .popup__close-button {
-    max-width: 32px;
-    max-height: 32px;
-    color: #FFFFFF;
-    background: #000000;
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    padding: 0;
+  max-width: 32px;
+  max-height: 32px;
+  color: #ffffff;
+  background: #000000;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  padding: 0;
 }

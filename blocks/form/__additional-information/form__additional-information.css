@@ -1,12 +1,12 @@
 .form__additional-information {
-    max-width: 358px;
-    min-height: 14px;
-    width: 100%;
-    color: #000000;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    margin: 30px auto 0;
-    padding: 0;
+  max-width: 358px;
+  min-height: 14px;
+  width: 100%;
+  color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 30px auto 0;
+  padding: 0;
 }

@@ -7,12 +7,24 @@
   border-radius: 10px;
   padding: 0;
   margin: 0;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 846px) {
+@media screen and (max-width: 870px) {
   .element {
-    max-width: 242px;
+    max-width: 245px;
     max-height: 310px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .element {
+    width: 100%;
+    max-width: 282px;
+    max-height: 361px;
+    margin: 0 auto;
+    align-content: center;
   }
 }
