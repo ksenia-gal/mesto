@@ -1,5 +1,6 @@
-.form__line {
+.popup__line {
   max-width: 358px;
+  width: 100%;
   max-height: 0px;
   opacity: 0.2;
   border: 1px solid #000000;

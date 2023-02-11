@@ -6,8 +6,12 @@
   border-radius: 2px;
   margin: 48px 36px 37px;
   padding: 14px 124px 18px 125px;
-  display: flex;
-  position: relative;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #ffffff;
+  text-align: center;
 }
 
 .popup__save-button:hover {

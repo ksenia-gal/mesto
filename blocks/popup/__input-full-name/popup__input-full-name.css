@@ -1,6 +1,7 @@
-.form__full-name {
+.popup__input-full-name {
   max-width: 358px;
   min-height: 14px;
+  width: 100%;
   color: #000000;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
