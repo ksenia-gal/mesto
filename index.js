@@ -1,13 +1,35 @@
-const editProfileButton = document.querySelector('.profile__edit-button');
-editProfileButton.addEventListener('click', function() {
-    const editPopup = document.querySelector('.popup');
-    console.log(editPopup);
-    editPopup.classList.add('popup_opened');
+const editProfileButton = document.querySelector(".profile__edit-button");
+editProfileButton.addEventListener("click", function() {
+    const editPopup = document.querySelector(".popup");
+    console.log("editPopup");
+    editPopup.classList.add("popup_opened");
 });
 
-const editPopupCloseButton = document.querySelector('.popup__close-button');
-editPopupCloseButton.addEventListener('click', function() {
-    const closePopup = document.querySelector('.popup__container');
-    console.log(closePopup);
-    editPopup.classList.remove('popup_opened');
+const closePopupButton = document.querySelector(".popup__close-button");
+closePopupButton.addEventListener("click", function() {
+    const editPopup = document.querySelector(".popup");
+    console.log("editPopup");
+    editPopup.classList.remove("popup_opened");
 });
+
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+}
+
+const fullName = "Жак-Ив Кусто";
+const additionalInfo = "Исследователь океана";
+
+const profileName = document.querySelector(".profile__title");
+profileName.textContent = fullName;
+
+const profileAdditionalInfo = document.querySelector(".profile__subtitle");
+profileAdditionalInfo.textContent = additionalInfo;
+
+const fullNameInput = document.querySelector(".popup__input-full-name");
+fullNameInput.value = fullName;
+const AdditionalInfoInput = document.querySelector(".popup__input-additional-information");
+AdditionalInfoInput.value = additionalInfo;

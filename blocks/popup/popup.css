@@ -4,9 +4,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
   padding: 0;
-  display: flex;
   justify-content: center;
   z-index: 1;
   top: 0;
+  display: none;
   position: fixed;
 }
