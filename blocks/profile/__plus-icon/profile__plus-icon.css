@@ -1,4 +1,4 @@
-.plus__icon {
+.profile__plus-icon {
   max-width: 22px;
   max-height: 22px;
   display: flex;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .plus__icon {
+  .profile__plus-icon {
     max-width: 16px;
     max-height: 16px;
   }
