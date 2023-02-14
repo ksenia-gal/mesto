@@ -10,3 +10,9 @@
   margin: 0 auto;
   padding: 0;
 }
+
+@media screen and (max-width: 450px) {
+  .popup__input-full-name {
+    max-width: 280px;
+  }
+}

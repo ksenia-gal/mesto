@@ -33,3 +33,19 @@ const fullNameInput = document.querySelector(".popup__input-full-name");
 fullNameInput.value = fullName;
 const AdditionalInfoInput = document.querySelector(".popup__input-additional-information");
 AdditionalInfoInput.value = additionalInfo;
+
+const formElement  = document.querySelector(".popup__container");
+const nameInput = document.querySelector(".popup__input-full-name");
+const jobInput = document.querySelector(".popup__input-additional-information");
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+
+console.log(nameInput.value);
+console.log(jobInput.value);
+
+profileName.textContent = nameInput.value;
+profileAdditionalInfo.textContent = jobInput.value;
+
+}
+
+formElement.addEventListener('submit', handleFormSubmit); 
