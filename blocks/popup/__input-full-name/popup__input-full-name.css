@@ -1,14 +1,14 @@
 .popup__input-full-name {
-  max-width: 358px;
   width: 100%;
   color: #000000;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   border: none;
+  border-bottom: 1px solid #000000;
 }
 
 @media screen and (max-width: 450px) {

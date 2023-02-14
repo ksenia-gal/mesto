@@ -8,5 +8,6 @@
 @media screen and (max-width: 450px) {
   .profile__pen-icon {
     max-width: 7.5px;
+    margin: 5.25px 5.25px;
   }
 }

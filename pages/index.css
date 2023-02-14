@@ -3,7 +3,6 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__title/profile__title.css);
@@ -21,7 +20,6 @@
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__input-full-name/popup__input-full-name.css);
-@import url(../blocks/popup/__line/popup__line.css);
 @import url(../blocks/popup/__input-additional-information/popup__input-additional-information.css);
 @import url(../blocks/element/__like-button/element__like-button.css);
 @import url(../blocks/elements/elements.css);
@@ -32,3 +30,4 @@
 @import url(../blocks/element/__block-image/element__block-image.css);
 @import url(../blocks/footer/footer.css);
 @import url(../scripts/index.js);
+@import url(../blocks/popup/__overlay/popup__overlay.css);

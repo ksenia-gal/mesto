@@ -14,7 +14,6 @@
         alt="Логотип заголовка"
         class="header__logo"
       >
-      <img src="./images/Line.png" alt="Линия" class="header__line">
     </header>
     <main class="content">
       <section class="profile">
@@ -26,7 +25,7 @@
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <h2 class="profile__subtitle">Исследователь океана</h2>
-          <button class="profile__edit-button">
+          <button aria-label="Редактировать" class="profile__edit-button">
             <img
               src="./images/Vector-2.png"
               alt="Кнопка редактирования"
@@ -34,7 +33,7 @@
             >
           </button>
         </div>
-        <button class="profile__add-button">
+        <button aria-label="Добавить" class="profile__add-button">
           <img
             src="./images/Vectoradd.png"
             alt="Значок плюса"
@@ -72,7 +71,7 @@
           >
           <div class="element__block">
             <p class="element__title">Гора Эльбрус</p>
-            <button class="element__like-button">
+            <button aria-label="Лайкнуть" class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
@@ -91,7 +90,7 @@
           >
           <div class="element__block">
             <p class="element__title">Домбай</p>
-            <button class="element__like-button">
+            <button aria-label="Лайкнуть" class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
@@ -110,7 +109,7 @@
           >
           <div class="element__block">
             <p class="element__title">Гора Эльбрус</p>
-            <button class="element__like-button">
+            <button aria-label="Лайкнуть" class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
@@ -129,7 +128,7 @@
           >
           <div class="element__block">
             <p class="element__title">Домбай</p>
-            <button class="element__like-button">
+            <button aria-label="Лайкнуть" class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
@@ -147,8 +146,8 @@
             data-type="auto"
           >
           <div class="element__block">
-            <p class="element__title">Карачаево-Ч...</p>
-            <button class="element__like-button">
+            <p class="element__title">Карачаево-Черкесия</p>
+            <button aria-label="Лайкнуть" class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
@@ -160,8 +159,10 @@
         </article>
       </section>
     </main>
-    <footer class="footer">&copy; 2020 Mesto Russia</footer>
+    <footer class="footer">
+      <p>&copy; 2020 Mesto Russia</p></footer>
     <section class="popup">
+      <div class="popup__overlay">
       <form class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input
@@ -169,15 +170,13 @@
           placeholder="Введите имя"
           class="popup__input-full-name"
         >
-        <div class="popup__line"></div>
         <input
           type="text"
           placeholder="Введите дополнительную информацию"
           class="popup__input-additional-information"
         >
-        <div class="popup__line"></div>
         <button class="popup__save-button" type="submit">Сохранить</button>
-        <button type="button" class="popup__close-button">
+        <button aria-label="Закрыть" type="button" class="popup__close-button">
           <img
             src="./images/CloseIcon.svg"
             alt="Значок крестика"
@@ -185,7 +184,9 @@
           >
         </button>
       </form>
+      </div>
     </section>
+  
     <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   background: #ffffff;
+  cursor: pointer;
 }
 
 .element__like-button:hover {
