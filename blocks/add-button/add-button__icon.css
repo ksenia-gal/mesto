@@ -4,3 +4,10 @@
   display: flex;
   position: relative;
 }
+
+@media screen and (max-width: 450px) {
+  .add-button__icon {
+    max-width: 16px;
+    max-height: 16px;
+  }
+}

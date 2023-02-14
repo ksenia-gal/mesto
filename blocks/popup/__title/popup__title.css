@@ -9,3 +9,12 @@
   color: #000000;
   position: relative;
 }
+
+@media screen and (max-width: 450px) {
+  .popup__title {
+    max-width: 238px;
+    margin: 25px 22px 75px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

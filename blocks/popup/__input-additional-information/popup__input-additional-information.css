@@ -1,6 +1,5 @@
 .popup__input-additional-information {
   max-width: 358px;
-  min-height: 14px;
   width: 100%;
   color: #000000;
   font-family: "Inter", Arial, sans-serif;
@@ -9,10 +8,11 @@
   line-height: 17px;
   margin: 30px auto 0;
   padding: 0;
+  border: none;
 }
 
 @media screen and (max-width: 450px) {
   .popup__input-additional-information {
-    max-width: 280px;
+    max-width: 238px;
   }
 }
