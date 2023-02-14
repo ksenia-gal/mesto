@@ -1,4 +1,4 @@
-.edit-button__icon {
+.pen__icon {
   margin: 0;
   padding: 0;
   max-width: 10px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .edit-button__icon {
+  .pen__icon {
     max-width: 7.5px;
   }
 }
