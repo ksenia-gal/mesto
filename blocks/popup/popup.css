@@ -5,16 +5,9 @@
   bottom: 0;
   width: 100%;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0;
   justify-content: center;
   z-index: 1;
   display: none;
   position: fixed;
 }
-
-@media screen and (max-width: 450px) {
-  .popup {
-    padding: 0 22px;
-  }
-}
-
