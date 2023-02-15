@@ -40,7 +40,6 @@ function handleFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileAdditionalInfo.textContent = jobInput.value;
   closePopup();
-  console.log(closePopup);
 }
 
 formElement.addEventListener("submit", handleFormSubmit);
