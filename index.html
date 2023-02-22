@@ -42,121 +42,24 @@
         </button>
       </section>
 
-      <section aria-label="Галерея" class="elements">
-        <article aria-label="Элемент галереи" class="element">
+      <section aria-label="Галерея" class="elements">    
+        <template id="cardTemplate">
+          <div class="element">
           <img
             class="element__image"
-            src="./images/kirill-pershin-1088404-unsplash.png"
-            alt="Фотография монастыря"
-            data-type="auto"
           >
           <div class="element__block">
-            <p class="element__title">Карачаевск</p>
+            <p class="element__title"></p>
             <button class="element__like-button">
               <img
                 class="element__block-image"
                 src="./images/like-icon.png"
                 alt="Изображение сердца"
-                data-type="auto"
               >
             </button>
           </div>
-        </article>
-        <article aria-label="Элемент галереи" class="element">
-          <img
-            class="element__image"
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            alt="Фотография горы Эльбрус"
-            data-type="auto"
-          >
-          <div class="element__block">
-            <p class="element__title">Гора Эльбрус</p>
-            <button aria-label="Лайкнуть" class="element__like-button">
-              <img
-                class="element__block-image"
-                src="./images/like-icon.png"
-                alt="Изображение сердца"
-                data-type="auto"
-              >
-            </button>
-          </div>
-        </article>
-        <article aria-label="Элемент галереи" class="element">
-          <img
-            class="element__image"
-            src="./images/kirill-pershin-1556355-unsplash.png"
-            alt="Фотография горы Домбай"
-            data-type="auto"
-          >
-          <div class="element__block">
-            <p class="element__title">Домбай</p>
-            <button aria-label="Лайкнуть" class="element__like-button">
-              <img
-                class="element__block-image"
-                src="./images/like-icon.png"
-                alt="Изображение сердца"
-                data-type="auto"
-              >
-            </button>
-          </div>
-        </article>
-        <article aria-label="Элемент галереи" class="element">
-          <img
-            class="element__image"
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            alt="Фотография горы Эльбрус"
-            data-type="auto"
-          >
-          <div class="element__block">
-            <p class="element__title">Гора Эльбрус</p>
-            <button aria-label="Лайкнуть" class="element__like-button">
-              <img
-                class="element__block-image"
-                src="./images/like-icon.png"
-                alt="Изображение сердца"
-                data-type="auto"
-              >
-            </button>
-          </div>
-        </article>
-        <article aria-label="Элемент галереи" class="element">
-          <img
-            class="element__image"
-            src="./images/kirill-pershin-1556355-unsplash.png"
-            alt="Фотография горы Домбай"
-            data-type="auto"
-          >
-          <div class="element__block">
-            <p class="element__title">Домбай</p>
-            <button aria-label="Лайкнуть" class="element__like-button">
-              <img
-                class="element__block-image"
-                src="./images/like-icon.png"
-                alt="Изображение сердца"
-                data-type="auto"
-              >
-            </button>
-          </div>
-        </article>
-        <article aria-label="Элемент галереи" class="element">
-          <img
-            class="element__image"
-            src="./images/kirill-pershin-1088404-unsplash.png"
-            alt="Фотография монастыря"
-            data-type="auto"
-          >
-          <div class="element__block">
-            <p class="element__title">Карачаево-Черкесия</p>
-            <button aria-label="Лайкнуть" class="element__like-button">
-              <img
-                class="element__block-image"
-                src="./images/like-icon.png"
-                alt="Изображение сердца"
-                data-type="auto"
-              >
-            </button>
-          </div>
-        </article>
+        </div>
+      </template>
       </section>
     </main>
     <footer class="footer">
