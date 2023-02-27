@@ -48,6 +48,13 @@
           <img
             class="element__image"
           >
+          <button class="element__delete-button">
+            <img
+              class="element__trash-icon"
+              src="./images/like-icon.png"
+              alt="Значок корзины"
+            >
+          </button>
           <div class="element__block">
             <p class="element__title"></p>
             <button class="element__like-button">
@@ -65,6 +72,7 @@
     <footer class="footer">
       <p>&copy; 2020 Mesto Russia</p>
     </footer>
+    
     <section class="popup">
       <div class="popup__overlay">
         <form class="popup__container">
@@ -94,6 +102,38 @@
         </form>
       </div>
     </section>
+
+    
+<section class="place">
+      <div class="place__overlay">
+        <form class="place__container">
+          <h2 class="place__titling">Новое место</h2>
+          <input
+            type="text"
+            placeholder="Введите название места"
+            class="place__input-name"
+          >
+          <input
+            type="text"
+            placeholder="Введите ссылку на картинку"
+            class="place__input-link"
+          >
+          <button class="place__create-button" type="submit">Создать</button>
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="place__close-button"
+          >
+            <img
+              src="./images/CloseIcon.svg"
+              alt="Значок крестика"
+              class="place__close-icon"
+            >
+          </button>
+        </form>
+      </div>
+    </section>
+
 
     <script src="./scripts/index.js"></script>
   </body>

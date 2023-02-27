@@ -1,8 +1,52 @@
+const cards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    alt: 'Фотография гор',
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    alt: 'Фотография зимней реки',
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    alt: 'Фотография панельного дома',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    alt: 'Фотография природы Камчатки',
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    alt: 'Фотография железной дороги',
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    alt: 'Фотография природы Байкала',
+  }
+];
+
+const elements = document.querySelector('.elements');
+
+function createCard(card) {
+const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
+const cardHeading = newCard.querySelector('.element__title');
+cardHeading.textContent = card.name;
+const cardImage = newCard.querySelector('.element__image');
+cardImage.setAttribute('src', card.link);
+cardImage.setAttribute('alt', card.alt);
+elements.append(newCard) }
+
+cards.forEach(createCard) 
+
 const editPopup = document.querySelector(".popup");
 const editProfileButton = document.querySelector(".profile__edit-button");
-editProfileButton.addEventListener("click", function () {
-  editPopup.classList.add("popup_opened");
-});
+editProfileButton.addEventListener("click", openPopup);
  
 const closePopupButton = document.querySelector(".popup__close-button");
 closePopupButton.addEventListener("click", closePopup);
@@ -41,49 +85,21 @@ function handleFormSubmit(evt) {
  
 formElement.addEventListener("submit", handleFormSubmit);
 
-const cards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-      alt: 'Фотография гор',
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-      alt: 'Фотография зимней реки',
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-      alt: 'Фотография панельного дома',
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-      alt: 'Фотография природы Камчатки',
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-      alt: 'Фотография железной дороги',
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-      alt: 'Фотография природы Байкала',
-    }
-  ];
 
+
+
+const editPopupPlace = document.querySelector(".place");
+const addProfileButton = document.querySelector(".profile__add-button");
+addProfileButton.addEventListener("click", openPopupPlace);
  
-const elements = document.querySelector('.elements');
+const closePopupPlaceButton = document.querySelector(".place__close-button");
+closePopupPlaceButton.addEventListener("click", closePopupPlace);
+ 
+function openPopupPlace() {
+  editPopupPlace.classList.add("place_opened");
+}
+console.log(openPopupPlace); 
+function closePopupPlace() {
+  editPopupPlace.classList.remove("place_opened");
+}
 
-function createCard(card) {
-const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
-const cardHeading = newCard.querySelector('.element__title');
-cardHeading.textContent = card.name;
-const cardImage = newCard.querySelector('.element__image');
-cardImage.setAttribute('src', card.link);
-cardImage.setAttribute('alt', card.alt);
-elements.append(newCard) }
-
-cards.forEach(createCard) 
