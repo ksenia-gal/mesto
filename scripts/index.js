@@ -1,3 +1,6 @@
+//1. Шесть карточек «из коробки»
+
+
 const cards = [
   {
     name: 'Архыз',
@@ -32,6 +35,8 @@ const cards = [
 ];
 
 const elements = document.querySelector('.elements');
+const likeButton = document.querySelector('.element__like-button');
+const likeButtonActive = document.querySelector('.element__block-image_active');
 
 function createCard(card) {
 const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
@@ -40,10 +45,20 @@ cardHeading.textContent = card.name;
 const cardImage = newCard.querySelector('.element__image');
 cardImage.setAttribute('src', card.link);
 cardImage.setAttribute('alt', card.alt);
-elements.append(newCard) }
+const deleteButton = newCard.querySelector(".element__delete-button");
+deleteButton.addEventListener("click", handleDeleteButtonClick)
+elements.append(newCard); }
 
 cards.forEach(createCard) 
 
+// 5. Удаление карточки
+function handleDeleteButtonClick(evt) {
+  const button = evt.target;
+  const element = button.closest(".element");
+  element.remove();
+}
+
+// 4ПР
 const editPopup = document.querySelector(".popup");
 const editProfileButton = document.querySelector(".profile__edit-button");
 editProfileButton.addEventListener("click", openPopup);
@@ -86,7 +101,7 @@ function handleFormSubmit(evt) {
 formElement.addEventListener("submit", handleFormSubmit);
 
 
-
+//2. Форма добавления карточки
 
 const editPopupPlace = document.querySelector(".place");
 const addProfileButton = document.querySelector(".profile__add-button");
@@ -103,3 +118,30 @@ function closePopupPlace() {
   editPopupPlace.classList.remove("place_opened");
 }
 
+// 3. Добавление карточки
+
+const formPlace = document.querySelector(".place__container");
+formPlace.addEventListener('submit', handleFormPlaceSubmit);
+
+function handleFormPlaceSubmit(evt) {
+  evt.preventDefault();
+  const formPlace = evt.target;
+  const placeLinkInput = formPlace.querySelector('.place__input-link').value;
+  const placeNameInput = formPlace.querySelector('.place__input-name').value;
+  const card = {
+    image: placeLinkInput,
+    heading: placeNameInput,
+  }
+  createCard(card);
+}
+
+
+//4. Лайк карточки
+
+
+
+//6. Открытие попапа с картинкой
+//7. Плавное открытие и закрытие попаповformPlace.addEventListener("submit", handleFormPlaceSubmit);
+cardImage.setAttribute = placeLinkInput.value;
+  cardHeading.textContent = placeNameInput.value;
+  closePopupPlace();
