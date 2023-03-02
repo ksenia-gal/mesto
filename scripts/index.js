@@ -1,3 +1,38 @@
+// 4ПР
+
+const editPopup = document.querySelector('.popup_type_edit');
+const editProfileButton = document.querySelector('.profile__edit-button');
+const editProfileCloseButton = editPopup.querySelector('.popup__close-button');
+editProfileButton.addEventListener("click", function () {
+  openPopup(editPopup);
+});
+
+editProfileCloseButton.addEventListener('click', function () {
+  closePopup(editPopup);
+});
+
+const fullName = "Жак-Ив Кусто";
+const additionalInfo = "Исследователь океана";
+const profileName = document.querySelector('.profile__title');
+const profileAdditionalInfo = document.querySelector('.profile__subtitle');
+const fullNameInput = document.querySelector('.popup__input-full-name');
+fullNameInput.value = fullName;
+const AdditionalInfoInput = document.querySelector('.popup__input-additional-information');
+AdditionalInfoInput.value = additionalInfo;
+ 
+const formElement = editPopup.querySelector('.popup__container');
+const nameInput = document.querySelector('.popup__input-full-name');
+const jobInput = document.querySelector('.popup__input-additional-information');
+
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileAdditionalInfo.textContent = jobInput.value;
+  closePopup(popup);
+}
+ 
+formElement.addEventListener("submit", handleFormSubmit);
+
 //1. Шесть карточек «из коробки»
 const cards = [
   {
@@ -41,8 +76,8 @@ cardHeading.textContent = card.name;
 const cardImage = newCard.querySelector('.element__image');
 cardImage.setAttribute('src', card.link);
 cardImage.setAttribute('alt', card.alt);
-const deleteButton = newCard.querySelector(".element__delete-button");
-deleteButton.addEventListener("click", handleDeleteButtonClick)
+const deleteButton = newCard.querySelector('.element__delete-button');
+deleteButton.addEventListener('click', handleDeleteButtonClick)
 elements.append(newCard); 
 return newCard;
 }
@@ -69,70 +104,46 @@ addPopupCloseButton.addEventListener('click', function () {
   closePopup(addPopup);
 });
 
+// 3. Добавление карточки
+//  ПРИДУМАТЬ КАК СОЗДАВАТЬ КАРТИНКИ С ТЕМИ ЖЕ СТИЛЯМИ
+const formPlace = addPopup.querySelector('.popup__container');
+formPlace.addEventListener('submit', handleFormPlaceSubmit);
 
+function handleFormPlaceSubmit(evt) {
+evt.preventDefault();
+const formPlace = evt.target;
+const placeLinkInput = formPlace.querySelector('.popup__input-link').value;
+const placeNameInput = formPlace.querySelector('.popup__input-name').value;
+const card = {
+image: placeLinkInput,
+heading: placeNameInput,
+}
+createCard(card);
+}
 
+//4. Лайк карточки
+
+const likeButton = newCard.querySelector('.element__like-button');
+
+likeButton.addEventListener('click', handleLikeButtonClick);
+function LikeButtonClick() {
+  likeButton.classList.toggle('element__like-button_active');
+}
 // 5. Удаление карточки
 function handleDeleteButtonClick(evt) {
   const button = evt.target;
-  const element = button.closest(".element");
+  const element = button.closest('.element');
   element.remove();
 }
 
-// 4ПР
-
-const editPopup = document.querySelector(".popup_type_edit");
-const editProfileButton = document.querySelector(".profile__edit-button");
-editProfileButton.addEventListener("click", openPopup);
-
-
-
-const fullName = "Жак-Ив Кусто";
-const additionalInfo = "Исследователь океана";
-const profileName = document.querySelector(".profile__title");
-const profileAdditionalInfo = document.querySelector(".profile__subtitle");
-const fullNameInput = document.querySelector(".popup__input-full-name");
-fullNameInput.value = fullName;
-const AdditionalInfoInput = document.querySelector(
-  ".popup__input-additional-information"
-);
-AdditionalInfoInput.value = additionalInfo;
- 
-const formElement = document.querySelector(".popup__container");
-const nameInput = document.querySelector(".popup__input-full-name");
-const jobInput = document.querySelector(".popup__input-additional-information");
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileAdditionalInfo.textContent = jobInput.value;
-  closePopup(popup);
-}
- 
-formElement.addEventListener("submit", handleFormSubmit);
 
 
 
 
-// 3. Добавление карточки
-
-// const formPlace = document.querySelector(".place__container");
-//  formPlace.addEventListener('submit', handleFormPlaceSubmit);
-
-// function handleFormPlaceSubmit(evt) {
-//   evt.preventDefault();
-//   const formPlace = evt.target;
-//   const placeLinkInput = formPlace.querySelector('.place__input-link').value;
-//   const placeNameInput = formPlace.querySelector('.place__input-name').value;
-//   const card = {
-//     image: placeLinkInput,
-//     heading: placeNameInput,
-//  }
-//    createCard(card);
-// }
 
 
-//4. Лайк карточки
-const likeButton = document.querySelector('.element__like-button');
-const likeButtonActive = document.querySelector('.element__block-image_active');
+
+
 
 
 //6. Открытие попапа с картинкой
