@@ -53,18 +53,21 @@ cards.forEach(createCard)
 const popup = document.querySelector('.popup');
 const addPopup = document.querySelector('.popup_type_add');
 const addProfileButton = document.querySelector('.profile__add-button');
-const closePopupButton = document.querySelector('.popup__close-button');
+const addPopupCloseButton = addPopup.querySelector('.popup__close-button');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
-addProfileButton.addEventListener('click', openPopup(addPopup));
-
+addProfileButton.addEventListener('click', function () {
+  openPopup(addPopup);
+});
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
  
-closePopupButton.addEventListener("click", closePopup(popup));
+addPopupCloseButton.addEventListener('click', function () {
+  closePopup(addPopup);
+});
 
 
 
@@ -101,7 +104,7 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAdditionalInfo.textContent = jobInput.value;
-  closePopup();
+  closePopup(popup);
 }
  
 formElement.addEventListener("submit", handleFormSubmit);
@@ -111,20 +114,20 @@ formElement.addEventListener("submit", handleFormSubmit);
 
 // 3. Добавление карточки
 
-const formPlace = document.querySelector(".place__container");
- formPlace.addEventListener('submit', handleFormPlaceSubmit);
+// const formPlace = document.querySelector(".place__container");
+//  formPlace.addEventListener('submit', handleFormPlaceSubmit);
 
-function handleFormPlaceSubmit(evt) {
-  evt.preventDefault();
-  const formPlace = evt.target;
-  const placeLinkInput = formPlace.querySelector('.place__input-link').value;
-  const placeNameInput = formPlace.querySelector('.place__input-name').value;
-  const card = {
-    image: placeLinkInput,
-    heading: placeNameInput,
- }
-   createCard(card);
-}
+// function handleFormPlaceSubmit(evt) {
+//   evt.preventDefault();
+//   const formPlace = evt.target;
+//   const placeLinkInput = formPlace.querySelector('.place__input-link').value;
+//   const placeNameInput = formPlace.querySelector('.place__input-name').value;
+//   const card = {
+//     image: placeLinkInput,
+//     heading: placeNameInput,
+//  }
+//    createCard(card);
+// }
 
 
 //4. Лайк карточки
