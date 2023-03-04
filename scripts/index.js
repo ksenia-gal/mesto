@@ -79,9 +79,7 @@ cardHeading.textContent = card.name;
 cardImage.setAttribute('src', card.link);
 cardImage.setAttribute('alt', card.alt);
 deleteButton.addEventListener('click', handleDeleteButtonClick)
-likeButton.addEventListener('click', function (evt) {
-  evt.target.classList.toggle('element__like-button_active');
-}); 
+likeButton.addEventListener('click', handleLikeButtonClick)
 return newCard;
 }
 
@@ -112,21 +110,30 @@ addPopupCloseButton.addEventListener('click', function () {
 
 // 3. Добавление карточки
 //  ПРИДУМАТЬ КАК СОЗДАВАТЬ КАРТИНКИ С ТЕМИ ЖЕ СТИЛЯМИ
+
+
 const formPlace = addPopup.querySelector('.popup__container');
-formPlace.addEventListener('submit', handleFormPlaceSubmit);
+const placeNameInput = document.querySelector('.popup__input-name');
+const placeLinkInput = document.querySelector('.popup__input-link');
 
 function handleFormPlaceSubmit(evt) {
-evt.preventDefault();
-const formPlace = evt.target;
-const placeLinkInput = formPlace.querySelector('.popup__input-link').value;
-const placeNameInput = formPlace.querySelector('.popup__input-name').value;
-const card = {
-image: placeLinkInput,
-heading: placeNameInput,
+  evt.preventDefault();
+  const cardHeading = newCard.querySelector('.element__title');
+  const cardImage = newCard.querySelector('.element__image');
+  cardHeading = placeNameInput.value;
+  cardImage = placeLinkInput.value;
+  
+  createCard(card);
+  closePopup(addPopup);
 }
-createCard(card);
-}
+ 
+formPlace.addEventListener("submit", handleFormPlaceSubmit);
+
+
 //4. Лайк карточки
+function handleLikeButtonClick (evt) {
+  evt.target.classList.toggle('element__like-button_active');
+}; 
 // 5. Удаление карточки
 function handleDeleteButtonClick(evt) {
   const button = evt.target;
