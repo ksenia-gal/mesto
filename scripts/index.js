@@ -72,17 +72,23 @@ const elements = document.querySelector('.elements');
 function createCard(card) {
 const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
 const cardHeading = newCard.querySelector('.element__title');
-cardHeading.textContent = card.name;
+const deleteButton = newCard.querySelector(".element__delete-button");
 const cardImage = newCard.querySelector('.element__image');
+const likeButton = newCard.querySelector('.element__like-button');
+cardHeading.textContent = card.name;
 cardImage.setAttribute('src', card.link);
 cardImage.setAttribute('alt', card.alt);
-const deleteButton = newCard.querySelector('.element__delete-button');
 deleteButton.addEventListener('click', handleDeleteButtonClick)
-elements.append(newCard); 
+likeButton.addEventListener('click', function (evt) {
+  evt.target.classList.toggle('element__like-button_active');
+}); 
 return newCard;
 }
 
-cards.forEach(createCard) 
+cards.forEach(function (card) {
+  const cardElement = createCard(card);
+elements.append(cardElement);
+}); 
 
 //2. Форма добавления карточки
 const popup = document.querySelector('.popup');
@@ -120,15 +126,7 @@ heading: placeNameInput,
 }
 createCard(card);
 }
-
 //4. Лайк карточки
-
-const likeButton = newCard.querySelector('.element__like-button');
-
-likeButton.addEventListener('click', handleLikeButtonClick);
-function LikeButtonClick() {
-  likeButton.classList.toggle('element__like-button_active');
-}
 // 5. Удаление карточки
 function handleDeleteButtonClick(evt) {
   const button = evt.target;
