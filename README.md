@@ -10,5 +10,7 @@
 * использование относительных величин
 * Grid Layout
 * JavaScript
+* функции
+* массивы
 
 * [Ссылка на GitHub Pages](https://ksenia-gal.github.io/mesto/)

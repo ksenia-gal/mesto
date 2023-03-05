@@ -68,7 +68,7 @@ const cards = [
 ];
 
 const elements = document.querySelector('.elements');
-
+const zoomPopup = document.querySelector('.popup_type_zoom');
 function createCard(card) {
 const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
 const cardHeading = newCard.querySelector('.element__title');
@@ -80,6 +80,7 @@ cardImage.setAttribute('src', card.link);
 cardImage.setAttribute('alt', card.alt);
 deleteButton.addEventListener('click', handleDeleteButtonClick)
 likeButton.addEventListener('click', handleLikeButtonClick)
+cardImage.addEventListener('click', openImage)
 return newCard;
 }
 
@@ -87,6 +88,14 @@ cards.forEach(function (card) {
   const cardElement = createCard(card);
 elements.append(cardElement);
 }); 
+
+function openImage(evt) {
+  const popupImage = zoomPopup.querySelector('.popup__image');
+  popupImage.src = evt.target.src;
+  const popupHeading = zoomPopup.querySelector('.popup__caption');
+  popupHeading.textContent = evt.target.alt;
+  zoomPopup.classList.add('popup_opened');
+}
 
 //2. Форма добавления карточки
 const popup = document.querySelector('.popup');
@@ -112,22 +121,32 @@ addPopupCloseButton.addEventListener('click', function () {
 //  ПРИДУМАТЬ КАК СОЗДАВАТЬ КАРТИНКИ С ТЕМИ ЖЕ СТИЛЯМИ
 
 
-const formPlace = addPopup.querySelector('.popup__container');
-const placeNameInput = document.querySelector('.popup__input-name');
-const placeLinkInput = document.querySelector('.popup__input-link');
+// const formPlace = addPopup.querySelector('.popup__container');
+// formPlace.addEventListener("submit", handleFormPlaceSubmit);
 
-function handleFormPlaceSubmit(evt) {
-  evt.preventDefault();
-  const cardHeading = newCard.querySelector('.element__title');
-  const cardImage = newCard.querySelector('.element__image');
-  cardHeading = placeNameInput.value;
-  cardImage = placeLinkInput.value;
+// function handleFormPlaceSubmit(evt) {
+//   evt.preventDefault();
+//   const name = formPlace.querySelector('.popup__input-name').value;
+//   const link = formPlace.querySelector('.popup__input-link').value;
+//   const card = {name, link};
+// createCard(card);
+// closePopup(addPopup);
+// };
   
-  createCard(card);
-  closePopup(addPopup);
-}
- 
-formPlace.addEventListener("submit", handleFormPlaceSubmit);
+// function handleFormPlaceSubmit (evt) {
+//   evt.preventDefault(); 
+  
+//   console.log(typeof document.querySelector("popup__input-full-name").value);
+//   console.log(typeof document.querySelector(".popup__input-additional-information").value);
+//   // Получите значение полей jobInput и nameInput из свойства value
+  
+//   // Выберите элементы, куда должны быть вставлены значения полей
+//   nameInput.value = profileName.textContent;
+//   additionalInfoInput.value = profileAdditionalInfo.textContent;
+//   // Вставьте новые значения с помощью textContent
+// }
+
+// formElement.addEventListener('submit', handleFormSubmit); 
 
 
 //4. Лайк карточки
@@ -141,15 +160,9 @@ function handleDeleteButtonClick(evt) {
   element.remove();
 }
 
-
-
-
-
-
-
-
-
-
-
 //6. Открытие попапа с картинкой
-//7. Плавное открытие и закрытие попаповformPlace.addEventListener("submit", handleFormPlaceSubmit);
+const zoomPopupCloseButton = zoomPopup.querySelector('.popup__close-button');
+
+zoomPopupCloseButton.addEventListener('click', function () {
+  closePopup(zoomPopup);
+});
