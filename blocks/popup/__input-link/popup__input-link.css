@@ -1,5 +1,5 @@
 .popup__input-link {
-    width: 100%;
+  width: 100%;
   color: #000000;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
@@ -9,12 +9,12 @@
   padding: 0;
   padding-bottom: 9px;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
 @media screen and (max-width: 450px) {
-    .popup__input-link {
+  .popup__input-link {
     max-width: 238px;
   }
 }
