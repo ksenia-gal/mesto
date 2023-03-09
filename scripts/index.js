@@ -95,7 +95,8 @@ const popupHeading = popupZoom.querySelector(".popup__caption");
 
 function openImage(evt) {
   popupImage.src = evt.target.src;
-  popupHeading.textContent = evt.target.alt;
+  popupImage.alt = evt.target.alt;
+  popupHeading.textContent = evt.target.closest("div").childNodes[5].childNodes[1].textContent;
   openPopup(popupZoom);
 }
 
