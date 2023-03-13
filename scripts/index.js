@@ -14,16 +14,16 @@ const fullName = "Жак-Ив Кусто";
 const additionalInfo = "Исследователь океана";
 const profileName = document.querySelector(".profile__title");
 const profileAdditionalInfo = document.querySelector(".profile__subtitle");
-const inputFullName = document.querySelector(".popup__input-full-name");
+const inputFullName = document.querySelector(".popup__input_name");
 inputFullName.value = fullName;
 const inputAdditionalInfo = document.querySelector(
-  ".popup__input-additional-information"
+  ".popup__input_information"
 );
 inputAdditionalInfo.value = additionalInfo;
 
 const formElement = editPopup.querySelector(".popup__container");
-const nameInput = document.querySelector(".popup__input-full-name");
-const jobInput = document.querySelector(".popup__input-additional-information");
+const nameInput = document.querySelector(".popup__input_name");
+const jobInput = document.querySelector(".popup__input_information");
 
 function handleFormProfileSubmit(evt) {
   evt.preventDefault();
@@ -122,8 +122,8 @@ buttonClosePopupAdd.addEventListener("click", function () {
 
 const formPlace = popupAdd.querySelector(".popup__container");
 formPlace.addEventListener("submit", handleFormPlaceSubmit);
-const formInputPlaceName = formPlace.querySelector(".popup__input-name");
-const formInputPlaceLink = formPlace.querySelector(".popup__input-link");
+const formInputPlaceName = formPlace.querySelector(".popup__input_place-name");
+const formInputPlaceLink = formPlace.querySelector(".popup__input_link");
 
 function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
@@ -152,3 +152,44 @@ const buttonClosePopupZoom = popupZoom.querySelector(".popup__close-button");
 buttonClosePopupZoom.addEventListener("click", function () {
   closePopup(popupZoom);
 });
+
+//1. Валидация формы «Редактировать профиль»
+// const formElement = editPopup.querySelector(".popup__container");
+// const nameInput = document.querySelector(".popup__input-full-name");
+// const jobInput = document.querySelector(".popup__input-additional-information");
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
+// console.log(formInput.id);
+
+// const showError = (input) => {
+//   input.classList.add('form__input_type_error');
+// };
+
+// const hideError = (input) => {
+//   input.classList.remove('form__input_type_error');
+// };
+
+// const checkInputNameValidity = () => {
+//   if (!nameInput.validity.valid) {
+//   showError(nameInput);
+// } else {
+//   hideError(nameInput);
+// }}
+
+// const checkInputAdditionalInfoValidity = () => {
+//   if (!jobInput.validity.valid) {
+//   showError(jobInput);
+// } else {
+//   hideError(jobInput);
+// }}
+
+// formElement.addEventListener('submit', function (evt) {
+//   evt.preventDefault();
+// });
+
+// nameInput.addEventListener('input', function () {
+//   checkInputNameValidity();
+// });
+
+// jobInput.addEventListener('input', function () {
+//   checkInputAdditionalInfoValidity();
+// });
