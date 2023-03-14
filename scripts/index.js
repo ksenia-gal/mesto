@@ -123,7 +123,7 @@ buttonClosePopupAdd.addEventListener("click", function () {
 const formPlace = popupAdd.querySelector(".popup__container");
 formPlace.addEventListener("submit", handleFormPlaceSubmit);
 const formInputPlaceName = formPlace.querySelector(".popup__input_place-name");
-const formInputPlaceLink = formPlace.querySelector(".popup__input_link");
+const formInputPlaceLink = formPlace.querySelector(".popup__input_image");
 
 function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
@@ -155,25 +155,92 @@ buttonClosePopupZoom.addEventListener("click", function () {
 
 //1. Валидация формы «Редактировать профиль»
 // const formElement = editPopup.querySelector(".popup__container");
-// const nameInput = document.querySelector(".popup__input-full-name");
-// const jobInput = document.querySelector(".popup__input-additional-information");
+const formInput = formElement.querySelector('.popup__input');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+// formElement.addEventListener('submit', function (evt) {
+//   evt.preventDefault();
+// });
+
+// formInput.addEventListener('input', function (evt) {
+//   console.log(evt.target.validity);
+// });
+
 // const formError = formElement.querySelector(`.${formInput.id}-error`);
 // console.log(formInput.id);
 
-// const showError = (input) => {
+// const showError = (input, errorMessage) => {
 //   input.classList.add('form__input_type_error');
+//   formError.textContent = errorMessage;
+// formError.classList.add('form__input-error_active'); 
 // };
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('form__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('form__input-error_active');
+};
 
 // const hideError = (input) => {
 //   input.classList.remove('form__input_type_error');
+//   formError.classList.remove('form__input-error_active');
+//   formError.textContent = ' ';
 // };
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('form__input_type_error');
+  errorElement.classList.remove('form__input-error_active');
+  errorElement.textContent = '';
+};
 
-// const checkInputNameValidity = () => {
-//   if (!nameInput.validity.valid) {
-//   showError(nameInput);
-// } else {
-//   hideError(nameInput);
-// }}
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+  return !inputElement.validity.valid;
+}); 
+}
+
+function toggleButtonState(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {
+  buttonElement.classList.add('button_inactive');
+} else {
+  buttonElement.classList.remove('button_inactive');
+} 
+}
+form.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+});
+
+formInput.addEventListener('input', function () {
+  checkInputValidity();
+});
+
+function setEventListeners(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  inputList.forEach((inputElement) => {
+  inputElement.addEventListener('input', function () {
+    checkInputValidity(formElement, inputElement);
+  });
+});
+}
+setEventListeners(form);
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+  formElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+  });
+
+    setEventListeners(formElement);
+});
+}
+enableValidation();
 
 // const checkInputAdditionalInfoValidity = () => {
 //   if (!jobInput.validity.valid) {
