@@ -21,7 +21,7 @@ const inputAdditionalInfo = document.querySelector(
 );
 inputAdditionalInfo.value = additionalInfo;
 
-const formElement = editPopup.querySelector(".popup__container");
+const form = editPopup.querySelector(".popup__container");
 const nameInput = document.querySelector(".popup__input_name");
 const jobInput = document.querySelector(".popup__input_information");
 
@@ -32,7 +32,7 @@ function handleFormProfileSubmit(evt) {
   closePopup(popup);
 }
 
-formElement.addEventListener("submit", handleFormProfileSubmit);
+form.addEventListener("submit", handleFormProfileSubmit);
 
 const cards = [
   {
@@ -154,109 +154,97 @@ buttonClosePopupZoom.addEventListener("click", function () {
 });
 
 //1. Валидация формы «Редактировать профиль»
+
 // const formElement = editPopup.querySelector(".popup__container");
+
+// Вынесем все необходимые элементы формы в константы
+const formElement = editPopup.querySelector('.popup__container');
 const formInput = formElement.querySelector('.popup__input');
 const formError = formElement.querySelector(`.${formInput.id}-error`);
-// formElement.addEventListener('submit', function (evt) {
-//   evt.preventDefault();
-// });
 
-// formInput.addEventListener('input', function (evt) {
-//   console.log(evt.target.validity);
-// });
-
-// const formError = formElement.querySelector(`.${formInput.id}-error`);
-// console.log(formInput.id);
-
-// const showError = (input, errorMessage) => {
-//   input.classList.add('form__input_type_error');
-//   formError.textContent = errorMessage;
-// formError.classList.add('form__input-error_active'); 
-// };
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('form__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__input-error_active');
+// Функция, которая добавляет класс с ошибкой
+const showInputError = (element) => {
+  element.classList.add('popup__input_type_error');
+  formError.classList.add('popup__input-error_active');
 };
 
-// const hideError = (input) => {
-//   input.classList.remove('form__input_type_error');
-//   formError.classList.remove('form__input-error_active');
-//   formError.textContent = ' ';
+// const showInputError = (form, errorMessage) => {
+//   const errorElement = form.querySelector(`.${formInput.id}-error`);
+//   inputElement.classList.add('popup__input_type_error');
+//   errorElement.textContent = errorMessage;
+//   errorElement.classList.add('popup__input-error_active');
 // };
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('form__input_type_error');
-  errorElement.classList.remove('form__input-error_active');
-  errorElement.textContent = '';
+
+// showInputError(formInput);
+
+// // Функция, которая удаляет класс с ошибкой
+const hideInputError = (element) => {
+  element.classList.remove('popup__input_type_error');
+  formError.classList.remove('popup__input-error_active');
 };
 
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+// const hideInputError = (form, inputElement) => {
+//   const errorElement = form.querySelector(`.${inputElement.id}-error`);
+//   inputElement.classList.remove('form__input_type_error');
+//   errorElement.classList.remove('form__input-error_active');
+//   errorElement.textContent = '';
+// };
+
+// // Функция, которая проверяет валидность поля
+const checkInputValidity = () => {
+  if (!formInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(formInput);
   } else {
-    hideInputError(formElement, inputElement);
+    // Если проходит, скроем
+    hideInputError(formInput);
   }
 };
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-  return !inputElement.validity.valid;
-}); 
-}
-
-function toggleButtonState(inputList, buttonElement) {
-  if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add('button_inactive');
-} else {
-  buttonElement.classList.remove('button_inactive');
-} 
-}
-form.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-});
-
-formInput.addEventListener('input', function () {
-  checkInputValidity();
-});
-
-function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-  inputList.forEach((inputElement) => {
-  inputElement.addEventListener('input', function () {
-    checkInputValidity(formElement, inputElement);
-  });
-});
-}
-setEventListeners(form);
-
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll('.form'));
-  formList.forEach((formElement) => {
-  formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-  });
-
-    setEventListeners(formElement);
-});
-}
-enableValidation();
-
-// const checkInputAdditionalInfoValidity = () => {
-//   if (!jobInput.validity.valid) {
-//   showError(jobInput);
+formInput.addEventListener('input', checkInputValidity); 
+// const checkInputValidity = (form, inputElement) => {
+// if (!inputElement.validity.valid) {
+// showInputError(form, inputElement, inputElement.validationMessage);
 // } else {
-//   hideError(jobInput);
-// }}
+// hideInputError(form, inputElement);
+// }
+// };
+// // const hasInvalidInput = (inputList) => {
+// //   return inputList.some((inputElement) => {
+// //   return !inputElement.validity.valid;
+// // }); 
+// // }
 
-// formElement.addEventListener('submit', function (evt) {
-//   evt.preventDefault();
+// // function toggleButtonState(inputList, buttonElement) {
+// //   if (hasInvalidInput(inputList)) {
+// //   buttonElement.classList.add('button_inactive');
+// // } else {
+// //   buttonElement.classList.remove('button_inactive');
+// // } 
+// // }
+
+// // Вызовем функцию checkInputValidity на каждый ввод символа
+// formInput.addEventListener('input', function () {
+// checkInputValidity();
 // });
 
-// nameInput.addEventListener('input', function () {
-//   checkInputNameValidity();
+// function setEventListeners(formElement) {
+//   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+//   inputList.forEach((inputElement) => {
+//   inputElement.addEventListener('input', function () {
+//     checkInputValidity(formElement, inputElement);
+//   });
 // });
+// }
+// setEventListeners(form);
 
-// jobInput.addEventListener('input', function () {
-//   checkInputAdditionalInfoValidity();
+// function enableValidation() {
+//   const formList = Array.from(document.querySelectorAll('.form'));
+//   formList.forEach((formElement) => {
+//   formElement.addEventListener('submit', (evt) => {
+//     evt.preventDefault();
+//   });
+
+//     setEventListeners(formElement);
 // });
+// }
+// enableValidation();
