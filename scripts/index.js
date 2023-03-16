@@ -162,9 +162,11 @@ const formElement = editPopup.querySelector('.popup__container');
 const formInput = formElement.querySelector('.popup__input');
 const formError = formElement.querySelector(`.${formInput.id}-error`);
 
+
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (element) => {
+const showInputError = (element, errorMessage) => {
   element.classList.add('popup__input_type_error');
+  formError.textContent = errorMessage;
   formError.classList.add('popup__input-error_active');
 };
 
@@ -181,6 +183,7 @@ const showInputError = (element) => {
 const hideInputError = (element) => {
   element.classList.remove('popup__input_type_error');
   formError.classList.remove('popup__input-error_active');
+  formError.textContent = '';
 };
 
 // const hideInputError = (form, inputElement) => {
@@ -194,7 +197,7 @@ const hideInputError = (element) => {
 const checkInputValidity = () => {
   if (!formInput.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formInput);
+    showInputError(formInput, formInput.validationMessage);
   } else {
     // Если проходит, скроем
     hideInputError(formInput);
