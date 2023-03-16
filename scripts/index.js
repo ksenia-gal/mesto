@@ -164,10 +164,11 @@ const formError = formElement.querySelector(`.${formInput.id}-error`);
 
 
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (element, errorMessage) => {
-  element.classList.add('popup__input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('popup__input-error_active');
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
 };
 
 // const showInputError = (form, errorMessage) => {
@@ -180,10 +181,11 @@ const showInputError = (element, errorMessage) => {
 // showInputError(formInput);
 
 // // Функция, которая удаляет класс с ошибкой
-const hideInputError = (element) => {
-  element.classList.remove('popup__input_type_error');
-  formError.classList.remove('popup__input-error_active');
-  formError.textContent = '';
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
 };
 
 // const hideInputError = (form, inputElement) => {
@@ -194,13 +196,13 @@ const hideInputError = (element) => {
 // };
 
 // // Функция, которая проверяет валидность поля
-const checkInputValidity = () => {
-  if (!formInput.validity.valid) {
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formInput, formInput.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
     // Если проходит, скроем
-    hideInputError(formInput);
+    hideInputError(formElement, inputElement);
   }
 };
 formInput.addEventListener('input', checkInputValidity); 
@@ -230,24 +232,23 @@ formInput.addEventListener('input', checkInputValidity);
 // checkInputValidity();
 // });
 
-// function setEventListeners(formElement) {
-//   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-//   inputList.forEach((inputElement) => {
-//   inputElement.addEventListener('input', function () {
-//     checkInputValidity(formElement, inputElement);
-//   });
-// });
-// }
-// setEventListeners(form);
+function setEventListeners(formElement) {
+const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+inputList.forEach((inputElement) => {
+inputElement.addEventListener('input', () => {
+checkInputValidity(formElement, inputElement);
+});
+});
+};
 
-// function enableValidation() {
-//   const formList = Array.from(document.querySelectorAll('.form'));
-//   formList.forEach((formElement) => {
-//   formElement.addEventListener('submit', (evt) => {
-//     evt.preventDefault();
-//   });
-
-//     setEventListeners(formElement);
+const enableValidation = () => {
+const formList = Array.from(document.querySelectorAll('.popup__container'));
+formList.forEach((formElement) => {
+// formElement.addEventListener('submit', (evt) => {
+// evt.preventDefault();
 // });
-// }
-// enableValidation();
+
+setEventListeners(formElement);
+});
+};
+enableValidation();
