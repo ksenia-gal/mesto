@@ -5,6 +5,6 @@ border: 1px solid #000000;
 color: #000000;
 }
 
-.popup__submit:hover {
+.popup__submit_disabled:hover {
     opacity: 0.2;
   }
