@@ -38,25 +38,52 @@ const hasInvalidInput = (inputList) => {
   return !inputElement.validity.valid;
   }); 
   }
-  const buttonElement = formElement.querySelector('.popup__submit');
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-buttonElement.classList.add('popup__submit_disabled');
-} else {
-buttonElement.classList.remove('popup__submit_disabled');
-} 
-};
 
+const buttonSubmits = document.querySelectorAll('.popup__submit');
+
+const disableButton = (buttonSubmits) => {
+    buttonSubmits.forEach((buttonSubmit) => {
+        buttonSubmit.classList.add('popup__submit_disabled');
+        buttonSubmit.disabled = true;
+    });
+}
+
+const enableButton = (buttonSubmits) => {
+    buttonSubmits.forEach((buttonSubmit) => {
+        buttonSubmit.classList.remove('popup__submit_disabled');
+        buttonSubmit.disabled = false;
+    });
+}
+const buttonDisabled = document.querySelector('.popup__button_disabled');
+const toggleButtonState = (buttonSubmits) => {
+    if(true) {
+        enableButton(buttonSubmits);
+    } else {
+        disableButton(buttonSubmits);
+    }
+    };
+
+
+// const toggleButtonState = (inputList, buttonSubmits) => {
+//  if (hasInvalidInput(inputList)) {
+// buttonSubmits.forEach((buttonSubmit) => {
+//     buttonSubmit.classList.add('popup__submit_disabled');
+// }); } else {
+//     buttonSubmits.forEach((buttonSubmit) => {
+//         buttonSubmit.classList.remove('popup__submit_disabled');
+//     }); 
+// };
+// }
 
 const setEventListeners = (formElement) => {
 const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
 
-toggleButtonState(inputList, buttonElement);
+toggleButtonState(inputList, buttonSubmits);
 
 inputList.forEach((inputElement) => {
 inputElement.addEventListener('input', () => {
 checkInputValidity(formElement, inputElement);
-toggleButtonState(inputList, buttonElement);
+toggleButtonState(inputList, buttonSubmits);
 });
 });
 };
@@ -71,5 +98,38 @@ formList.forEach((formElement) => {
 setEventListeners(formElement);
 });
 };
-enableValidation();
+enableValidation(buttonDisabled);
 
+//Функция валидации форм 
+  
+// const enableValidation = settings => { 
+//       const formList = Array.from(document.querySelectorAll(settings.formSelector)); 
+     
+//       formList.forEach(formElement => { 
+//         formElement.addEventListener('submit', evt => { 
+//           evt.preventDefault(); 
+//         }); 
+//         setEventListeners(formElement, settings); 
+//       }); 
+//     }; 
+     
+    // enableValidation({ 
+    //   formSelector: '.popup__form', 
+    //   inputSelector: '.popup__input', 
+    //   submitButtonSelector: '.popup__button', 
+    //   inactiveButtonClass: 'popup__button_disabled', 
+    //   inputErrorClass: 'popup__input_type_error', 
+    //   errorClass: 'popup__error_visible' 
+    // // });
+    // const validationConfig = {
+    //     formSelector: '.popup__form',
+    //     inputSelector: '.popup__input',
+    //     submitButtonSelector: '.popup__submit',
+    //     inactiveButtonClass: 'popup__button_disabled',
+    //     inputErrorClass: 'popup__input_type_error',
+    //     errorClass: 'popup__error_visible'
+    //   }; 
+
+    enableValidation({
+        '.popup__button_disabled',
+    })

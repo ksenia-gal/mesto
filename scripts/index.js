@@ -104,8 +104,9 @@ const popup = document.querySelector(".popup");
 const popupAdd = document.querySelector(".popup_type_add");
 const buttonAddProfile = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = popupAdd.querySelector(".popup__close-button");
-const OverlayList = Array.from(document.querySelectorAll('.popup__overlay'));
-const popupOverlay = popup.querySelectorAll('.overlay');
+// const popup__overlay = document.querySelectorAll('.popup__overlay');
+// console.log(overlayList);
+
 function popupCloseByEsc(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
@@ -113,14 +114,14 @@ function popupCloseByEsc(evt) {
   }
 }
 
-// // 3. Закрытие попапа кликом на оверлей
-
-
-OverlayList.forEach((overlay) => {
-  overlay.addEventListener('click', () => {
-    closePopup(popup)
-  });
-    });
+document.querySelectorAll('.popup__overlay').forEach(item => {
+  item.addEventListener('click', evt => {
+    if (evt.target === evt.currentTarget) {
+      const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+    };
+  })
+});
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
