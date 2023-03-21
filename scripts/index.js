@@ -93,6 +93,7 @@ function handleFormPlaceSubmit(evt) {
     link: placeLink,
   };
   elements.prepend(createCard(addCard));
+  disableButton(buttonSubmits)
   closePopup(popupAdd);
   formPlace.reset();
 }

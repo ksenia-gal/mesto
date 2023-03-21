@@ -76,24 +76,23 @@ toggleButtonState(inputList, buttonSubmits);
 });
 };
 
-const enableValidation = () => {
+const enableValidation = settings => {
 const formList = Array.from(document.querySelectorAll('.popup__container'));
 formList.forEach((formElement) => {
   formElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
   });
-setEventListeners(formElement);
+setEventListeners(formElement, settings);
 });
 };
 
-
-const validationConfig = {
+enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-}; 
+});
 
-enableValidation(validationConfig);
+enableValidation(settings);
