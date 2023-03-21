@@ -72,13 +72,4 @@ const enableValidation = () => {
     setEventListeners(formElement);
   });
 };
-enableValidation({
-  formSelector: ".popup__container",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-});
-
 enableValidation();
