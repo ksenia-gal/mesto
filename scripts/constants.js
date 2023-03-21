@@ -53,3 +53,6 @@ const formInputPlaceLink = formPlace.querySelector(".popup__input_image");
 const buttonClosePopupProfile = editPopup.querySelector(".popup__close-button");
 const buttonClosePopupAdd = popupAdd.querySelector(".popup__close-button");
 const buttonClosePopupZoom = popupZoom.querySelector(".popup__close-button");
+const formElement = document.querySelector('.popup__container');
+const formInput = formElement.querySelector('.popup__input');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
