@@ -33,7 +33,7 @@ function createCard(card) {
   cardImage.setAttribute("alt", card.alt);
   deleteButton.addEventListener("click", handleDeleteButtonClick);
   likeButton.addEventListener("click", handleLikeButtonClick);
-  cardImage.addEventListener("click", openImage);
+  cardImage.addEventListener("click", () => openImage(card));
   return newCard;
 }
 
@@ -42,10 +42,10 @@ cards.forEach(function (card) {
   elements.append(cardElement);
 });
 
-function openImage(evt) {
-  popupImage.src = evt.target.src;
-  popupImage.alt = evt.target.alt;
-  popupHeading.textContent = evt.target.closest("div").childNodes[5].childNodes[1].textContent;
+function openImage(card) {
+  popupImage.src = card.link;
+  popupImage.alt = card.name;
+  popupHeading.textContent = card.name;
   openPopup(popupZoom);
 }
 
