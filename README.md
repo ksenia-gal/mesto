@@ -12,5 +12,6 @@
 * JavaScript
 * функции
 * массивы
+* валидация форм
 
 * [Ссылка на GitHub Pages](https://ksenia-gal.github.io/mesto/)
