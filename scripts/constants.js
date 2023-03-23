@@ -53,6 +53,13 @@ const formInputPlaceLink = formPlace.querySelector(".popup__input_image");
 const buttonClosePopupProfile = editPopup.querySelector(".popup__close-button");
 const buttonClosePopupAdd = popupAdd.querySelector(".popup__close-button");
 const buttonClosePopupZoom = popupZoom.querySelector(".popup__close-button");
-const formElement = document.querySelector('.popup__container');
-const formInput = formElement.querySelector('.popup__input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+const buttonSubmitPlace = popupAdd.querySelector(".popup__submit_create");
+const buttonSubmitEdit = editPopup.querySelector(".popup__submit_save");
+const config = {
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
+};

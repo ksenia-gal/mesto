@@ -1,4 +1,5 @@
 buttonEditProfile.addEventListener("click", function () {
+  disableButton(buttonSubmitEdit, config);
   openPopup(editPopup);
 });
 
@@ -23,7 +24,8 @@ form.addEventListener("submit", handleFormProfileSubmit);
 function createCard(card) {
   const newCard = document
     .querySelector("#cardTemplate")
-    .content.querySelector(".element").cloneNode(true);
+    .content.querySelector(".element")
+    .cloneNode(true);
   const cardHeading = newCard.querySelector(".element__title");
   const deleteButton = newCard.querySelector(".element__delete-button");
   const cardImage = newCard.querySelector(".element__image");
@@ -50,32 +52,34 @@ function openImage(card) {
 }
 
 function popupCloseByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
     closePopup(popupOpened);
   }
 }
 
-document.querySelectorAll('.popup__overlay').forEach(item => {
-  item.addEventListener('click', evt => {
+document.querySelectorAll(".popup__overlay").forEach((item) => {
+  item.addEventListener("click", (evt) => {
     if (evt.target === evt.currentTarget) {
-      const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-    };
-  })
+      const popupOpened = document.querySelector(".popup_opened");
+      closePopup(popupOpened);
+    }
+  });
 });
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', popupCloseByEsc);
+  document.addEventListener("keydown", popupCloseByEsc);
 }
 buttonAddProfile.addEventListener("click", function () {
+  disableButton(buttonSubmitPlace, config);
+  formPlace.reset();
   openPopup(popupAdd);
 });
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', popupCloseByEsc);
+  document.removeEventListener("keydown", popupCloseByEsc);
 }
 
 buttonClosePopupAdd.addEventListener("click", function () {
@@ -93,7 +97,6 @@ function handleFormPlaceSubmit(evt) {
     link: placeLink,
   };
   elements.prepend(createCard(addCard));
-  disableButton(buttonSubmits)
   closePopup(popupAdd);
   formPlace.reset();
 }
@@ -111,4 +114,3 @@ function handleDeleteButtonClick(evt) {
 buttonClosePopupZoom.addEventListener("click", function () {
   closePopup(popupZoom);
 });
-
