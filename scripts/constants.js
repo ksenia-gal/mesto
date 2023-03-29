@@ -55,6 +55,7 @@ const buttonClosePopupAdd = popupAdd.querySelector(".popup__close-button");
 const buttonClosePopupZoom = popupZoom.querySelector(".popup__close-button");
 const buttonSubmitPlace = popupAdd.querySelector(".popup__submit_create");
 const buttonSubmitEdit = editPopup.querySelector(".popup__submit_save");
+const cardTemplateSelector = document.querySelector(".card");
 const config = {
   formSelector: ".popup__container",
   inputSelector: ".popup__input",
