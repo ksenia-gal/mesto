@@ -17,24 +17,40 @@ class Card {
   constructor(cards, cardTemplateSelector, handleCardClick) {
     this._link = cards.link;
     this._name = cards.name;
+    this._alt = cards.name;
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
     this._element = undefined;
   }
-  _getTemplate() {
-    const cardElement = document.querySelector(this.cardTemplateSelector).content.querySelector('photo-card').cloneNode(true);
-    return cardElement;
+  _createCard() {
+    const newCard = document
+    .querySelector(this._cardTemplateSelector)
+    .content.querySelector(".element")
+    .cloneNode(true);
+    
+    return newCard;
   }
-  _handleCardLike( {
-    this.likeButton.classList.toggle('likeisactive')
+
+  _handleLikeButtonClick( {
+    this.likeButton.classList.toggle("element__like-button_active");
   })
+
+//   _handleCardLike( {
+//     this.likeButton.classList.toggle('likeisactive')
+//   })
+
+_handleDeleteButtonClick( {
+    this.const button = evt.target;
+    const element = button.closest(".element");
+    element.remove();
+  }
   _handledeleteLike( {
     this.likeButton.classList.remove('likeisactive')
   })
 // => functions only as they never have private context, it sees 'This' and goes up to class level and call the needed method
-  _setEventListener() {
+  _setEventListeners() {
     this.likeButton.addEventListener('click', () => {
-        this._handleCardLike
+        this._handleLikeButtonClick
     })
 
     this.deleteButton.addEventListener('clivk,' () => {
