@@ -1,9 +1,3 @@
-// как рефакторить? смотреть какие ф-ии есть и переносить их в методы, создаем класс, что запихнуть? 
-// какие переменные создать? все остальное готово. нужно понимать что приватно что публично?
-// почти все ф-ии вызываются внутри класса
-// 1. класс валидейшн конструктор пустой смотрите какие есть ф-ии и пытаетесь понять что общего у всех валидаций и начинаете переносить в конструктор есть одна самая главная
-// она переносится первой
-
 // из задания:
 // Создайте класс Card, который создаёт карточку с текстом и ссылкой на изображение:
 // принимает в конструктор её данные и селектор её template-элемента;
@@ -11,74 +5,101 @@
 // содержит приватные методы для каждого обработчика;
 // содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
 // Для каждой карточки создайте экземпляр класса Card.
+const cards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+    alt: "Фотография гор",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+    alt: "Фотография зимней реки",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+    alt: "Фотография панельного дома",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+    alt: "Фотография природы Камчатки",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+    alt: "Фотография железной дороги",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+    alt: "Фотография природы Байкала",
+  },
+];
 
-
-class Card {
-  constructor(cards, cardTemplateSelector, handleCardClick) {
+export class Card {
+  constructor(cards, cardTemplateSelector, _handleImageClick) {
     this._link = cards.link;
     this._name = cards.name;
     this._alt = cards.name;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._handleCardClick = handleCardClick;
+    this._handleImageClick = handleImageClick; //???
     this._element = undefined;
   }
-  _createCard() {
-    const newCard = document
-    .querySelector(this._cardTemplateSelector)
-    .content.querySelector(".element")
-    .cloneNode(true);
-    
-    return newCard;
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardTemplateSelector)
+      .content.querySelector(".element")
+      .cloneNode(true);
+
+    return cardElement;
   }
 
-  _handleLikeButtonClick( {
+  _handleLikeButtonClick() {
     this.likeButton.classList.toggle("element__like-button_active");
-  })
-
-//   _handleCardLike( {
-//     this.likeButton.classList.toggle('likeisactive')
-//   })
-
-_handleDeleteButtonClick( {
-    this.const button = evt.target;
-    const element = button.closest(".element");
-    element.remove();
   }
-  _handledeleteLike( {
-    this.likeButton.classList.remove('likeisactive')
-  })
-// => functions only as they never have private context, it sees 'This' and goes up to class level and call the needed method
+
+  _handleDeleteButtonClick() {
+    this._element.remove();
+  }
+
+  _handleImageClick() {
+    this._element.classList.add('popup_opened');
+    // popupImage.src = card.link;
+    // popupImage.alt = card.name;
+    // popupHeading.textContent = card.name;
+    // openPopup(popupZoom);
+  }
+
   _setEventListeners() {
-    this.likeButton.addEventListener('click', () => {
-        this._handleLikeButtonClick
-    })
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeButtonClick();
+    });
 
-    this.deleteButton.addEventListener('clivk,' () => {
-        this._handeDelete();
-
-        this.cardpicture.addEventListener(click, ())
-    })
+    this._deleteButton.addEventListener("click", () => {
+      this._handleDeleteButtonClick;
+    });
+    // открытие карточки по клику на нее
+    this.cardImage.addEventListener('click', () => {
+      this._handleImageClick;
+    });
   }
 
-  generateCard () {
+  generateCard() {
     this._element = this._getTemplate();
-    this.cardPicture = this._element.querySelector('.photo-card_picture');
-    this.cardPicture.src = this.link;
-    this.cardPicture.alt = this._name;
-    this._element.querySelector('.photo card description').textContent = this.name;
-    this.likeButton = this._element.querySelector('.likebtn');
-    this.deleteButton = this._element.querySelector('.deletebtn');
+    this.cardImage = this._element.querySelector(".element__image");
+    this.cardImage.src = this._link;
+    this.cardImage.alt = this._name;
+    this._element.querySelector(".element__title").textContent = this._name;
+    this._likeButton = this._element.querySelector(".element__like-button");
+    this._deleteButton = this._element.querySelector(".element__delete-button");
 
     this._setEventListener();
-    
+
     return this._element;
   }
-
- 
 }
 
-cards.forEach((card) => {
-  const card = new Card(card, ".card", handleCardClick);
-});
 
-const cardItem = new Card(cards, ".card", handleCardClick);
