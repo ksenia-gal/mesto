@@ -5,46 +5,13 @@
 // содержит приватные методы для каждого обработчика;
 // содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
 // Для каждой карточки создайте экземпляр класса Card.
-const cards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    alt: "Фотография гор",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    alt: "Фотография зимней реки",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    alt: "Фотография панельного дома",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    alt: "Фотография природы Камчатки",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    alt: "Фотография железной дороги",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    alt: "Фотография природы Байкала",
-  },
-];
-
 export class Card {
   constructor(cards, cardTemplateSelector, _handleImageClick) {
     this._link = cards.link;
     this._name = cards.name;
     this._alt = cards.name;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._handleImageClick = handleImageClick; //???
+    this._handleImageClick = _handleImageClick; //???
     this._element = undefined;
   }
 
@@ -58,7 +25,7 @@ export class Card {
   }
 
   _handleLikeButtonClick() {
-    this.likeButton.classList.toggle("element__like-button_active");
+    this._likeButton.classList.toggle("element__like-button_active");
   }
 
   _handleDeleteButtonClick() {
@@ -89,9 +56,9 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this.cardImage = this._element.querySelector(".element__image");
-    this.cardImage.src = this._link;
-    this.cardImage.alt = this._name;
+    this._cardImage = this._element.querySelector(".element__image");
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector(".element__title").textContent = this._name;
     this._likeButton = this._element.querySelector(".element__like-button");
     this._deleteButton = this._element.querySelector(".element__delete-button");
