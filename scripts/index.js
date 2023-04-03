@@ -22,36 +22,35 @@ function handleFormProfileSubmit(evt) {
 
 form.addEventListener("submit", handleFormProfileSubmit);
 
-function createCard(card) {
-  const newCard = document
-    .querySelector("#cardTemplate")
-    .content.querySelector(".element")
-    .cloneNode(true);
-  const cardHeading = newCard.querySelector(".element__title");
-  const deleteButton = newCard.querySelector(".element__delete-button");
-  const cardImage = newCard.querySelector(".element__image");
-  const likeButton = newCard.querySelector(".element__like-button");
-  cardHeading.textContent = card.name;
-  cardImage.setAttribute("src", card.link);
-  cardImage.setAttribute("alt", card.alt);
-  deleteButton.addEventListener("click", handleDeleteButtonClick);
-  likeButton.addEventListener("click", handleLikeButtonClick);
-  cardImage.addEventListener("click", () => openImage(card));
-  return newCard;
-}
+// ф-я создания карточки + навешивание слушателей @@@@@@
 
-cards.forEach(function (card) {
-  const cardElement = createCard(card);
-  elements.append(cardElement);
+
+// ф-я добавления карточек в разметку @@@@@@
+// cards.forEach((item) => {
+//   const card = new Card(item, "#cardTemplate");
+//   const cardElement = card.generateCard();
+//   document.querySelector('.elements').append(cardElement);
+// });
+cards.forEach((item) => {
+  const card = new Card(item, '#cardTemplate', handleImageClick);
+  const cardElement = card.generateCard();
+  document.querySelector('.elements').append(cardElement);
 });
 
-function openImage(card) {
-  popupImage.src = card.link;
-  popupImage.alt = card.name;
-  popupHeading.textContent = card.name;
+// ф-я откарытия карточки зум @@@@@@
+// function openImage(card) {
+//   popupImage.src = card.link;
+//   popupImage.alt = card.name;
+//   popupHeading.textContent = card.name;
+//   openPopup(popupZoom);
+// }
+function handleImageClick(link, name) {
+  popupImage.src = link;
+  popupImage.alt = name;
+  popupHeading.textContent = name;
   openPopup(popupZoom);
 }
-
+// ф-я закрытия кнопкой esc
 function popupCloseByEsc(evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_opened");
@@ -59,6 +58,7 @@ function popupCloseByEsc(evt) {
   }
 }
 
+// overlay
 document.querySelectorAll(".popup__overlay").forEach((item) => {
   item.addEventListener("click", (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -68,27 +68,33 @@ document.querySelectorAll(".popup__overlay").forEach((item) => {
   });
 });
 
+//  общая ф-я открыти попапов
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", popupCloseByEsc);
 }
+
+// ф-я открытия попапа Add
 buttonAddProfile.addEventListener("click", function () {
   disableButton(buttonSubmitPlace, config);
   formPlace.reset();
   openPopup(popupAdd);
 });
 
+// общая ф-я закрытия попапов
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", popupCloseByEsc);
 }
 
+// ф-я закрытия попапа Add
 buttonClosePopupAdd.addEventListener("click", function () {
   closePopup(popupAdd);
 });
 
 formPlace.addEventListener("submit", handleFormPlaceSubmit);
 
+// submit формы place + добавление новой картинки в начало галереи 
 function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
   const placeName = formInputPlaceName.value;
@@ -101,17 +107,17 @@ function handleFormPlaceSubmit(evt) {
   closePopup(popupAdd);
   formPlace.reset();
 }
-
-function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("element__like-button_active");
-}
-
-function handleDeleteButtonClick(evt) {
-  const button = evt.target;
-  const element = button.closest(".element");
-  element.remove();
-}
-
+// ф-я лайка @@@@@@
+// function handleLikeButtonClick(evt) {
+//   evt.target.classList.toggle("element__like-button_active");
+// }
+// ф-я удаления карточки @@@@@@
+// function handleDeleteButtonClick(evt) {
+//   const button = evt.target;
+//   const element = button.closest(".element");
+//   element.remove();
+// }
+// ф-я закрытия попапа зум
 buttonClosePopupZoom.addEventListener("click", function () {
   closePopup(popupZoom);
 });
