@@ -23,27 +23,19 @@ function handleFormProfileSubmit(evt) {
 form.addEventListener("submit", handleFormProfileSubmit);
 
 // ф-я создания карточки + навешивание слушателей @@@@@@
-
-
-// ф-я добавления карточек в разметку @@@@@@
-// cards.forEach((item) => {
-//   const card = new Card(item, "#cardTemplate");
-//   const cardElement = card.generateCard();
-//   document.querySelector('.elements').append(cardElement);
-// });
-cards.forEach((item) => {
+function createCard(item) { 
   const card = new Card(item, '#cardTemplate', handleImageClick);
   const cardElement = card.generateCard();
+  return cardElement; 
+
+} 
+
+// ф-я добавления карточек в разметку @@@@@@
+cards.forEach((item) => {
+  const cardElement = createCard(item);
   document.querySelector('.elements').append(cardElement);
 });
 
-// ф-я откарытия карточки зум @@@@@@
-// function openImage(card) {
-//   popupImage.src = card.link;
-//   popupImage.alt = card.name;
-//   popupHeading.textContent = card.name;
-//   openPopup(popupZoom);
-// }
 function handleImageClick(link, name) {
   popupImage.src = link;
   popupImage.alt = name;
@@ -68,7 +60,7 @@ document.querySelectorAll(".popup__overlay").forEach((item) => {
   });
 });
 
-//  общая ф-я открыти попапов
+//  общая ф-я открыти попапов
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", popupCloseByEsc);
@@ -107,16 +99,7 @@ function handleFormPlaceSubmit(evt) {
   closePopup(popupAdd);
   formPlace.reset();
 }
-// ф-я лайка @@@@@@
-// function handleLikeButtonClick(evt) {
-//   evt.target.classList.toggle("element__like-button_active");
-// }
-// ф-я удаления карточки @@@@@@
-// function handleDeleteButtonClick(evt) {
-//   const button = evt.target;
-//   const element = button.closest(".element");
-//   element.remove();
-// }
+
 // ф-я закрытия попапа зум
 buttonClosePopupZoom.addEventListener("click", function () {
   closePopup(popupZoom);

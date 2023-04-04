@@ -20,13 +20,9 @@ export class Card {
     this._likeButton.classList.toggle("element__like-button_active");
   }
 
-  _handleDeleteButtonClick(evt) {
-    // this._element.remove();
-    const button = evt.target;
-  this._element.remove();
+  _handleDeleteButtonClick() {
+    this._element.remove();
   }
-
-  
 
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => {
@@ -34,9 +30,9 @@ export class Card {
     });
 
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteButtonClick;
+      this._handleDeleteButtonClick();
     });
-    // открытие карточки по клику на нее
+
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick(this._link, this._name);
     });
