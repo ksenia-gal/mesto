@@ -11,11 +11,6 @@ buttonClosePopupProfile.addEventListener("click", function () {
   closePopup(editPopup);
 });
 
-const fullName = "Жак-Ив Кусто";
-const additionalInfo = "Исследователь океана";
-inputFullName.value = fullName;
-inputAdditionalInfo.value = additionalInfo;
-
 function handleFormProfileSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -23,8 +18,7 @@ function handleFormProfileSubmit(evt) {
   closePopup(popup);
 }
 
-form.addEventListener("submit", handleFormProfileSubmit);
-
+profileForm.addEventListener("submit", handleFormProfileSubmit);
 function createCard(item) {
   const card = new Card(item, "#cardTemplate", handleImageClick);
   const cardElement = card.generateCard();
@@ -33,7 +27,7 @@ function createCard(item) {
 
 cards.forEach((item) => {
   const cardElement = createCard(item);
-  document.querySelector(".elements").append(cardElement);
+  elements.append(cardElement);
 });
 
 function handleImageClick(link, name) {
@@ -67,7 +61,7 @@ function openPopup(popup) {
 buttonAddProfile.addEventListener("click", function () {
   const formValidatorAddPopup = new FormValidator(config, popupAdd);
   formValidatorAddPopup.enableValidation();
-  formPlace.reset();
+  placeForm.reset();
   openPopup(popupAdd);
 });
 
@@ -80,7 +74,7 @@ buttonClosePopupAdd.addEventListener("click", function () {
   closePopup(popupAdd);
 });
 
-formPlace.addEventListener("submit", handleFormPlaceSubmit);
+placeForm.addEventListener("submit", handleFormPlaceSubmit);
 
 function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
@@ -92,7 +86,7 @@ function handleFormPlaceSubmit(evt) {
   };
   elements.prepend(createCard(addCard));
   closePopup(popupAdd);
-  formPlace.reset();
+  placeForm.reset();
 }
 
 buttonClosePopupZoom.addEventListener("click", function () {

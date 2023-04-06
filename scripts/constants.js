@@ -30,10 +30,10 @@ const cards = [
     alt: "Фотография природы Байкала",
   },
 ];
-
-const popup = document.querySelector(".popup");
+const popups = document.querySelectorAll('.popup');
+const popup = document.querySelector(".popup"); 
 const editPopup = document.querySelector(".popup_type_edit");
-const form = editPopup.querySelector(".popup__container");
+const profileForm = document.forms["profile-form"];
 const nameInput = document.querySelector(".popup__input_name");
 const jobInput = document.querySelector(".popup__input_information");
 const profileName = document.querySelector(".profile__title");
@@ -47,9 +47,9 @@ const elements = document.querySelector(".elements");
 const popupImage = popupZoom.querySelector(".popup__image");
 const popupHeading = popupZoom.querySelector(".popup__caption");
 const buttonAddProfile = document.querySelector(".profile__add-button");
-const formPlace = popupAdd.querySelector(".popup__container");
-const formInputPlaceName = formPlace.querySelector(".popup__input_place-name");
-const formInputPlaceLink = formPlace.querySelector(".popup__input_image");
+const placeForm = document.forms["place-form"];
+const formInputPlaceName = placeForm.querySelector(".popup__input_place-name");
+const formInputPlaceLink = placeForm.querySelector(".popup__input_image");
 const buttonClosePopupProfile = editPopup.querySelector(".popup__close-button");
 const buttonClosePopupAdd = popupAdd.querySelector(".popup__close-button");
 const buttonClosePopupZoom = popupZoom.querySelector(".popup__close-button");
