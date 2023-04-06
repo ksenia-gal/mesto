@@ -1,10 +1,13 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
+const formValidatorEditPopup = new FormValidator(config, editPopup);
+const formValidatorAddPopup = new FormValidator(config, popupAdd);
+formValidatorEditPopup.enableValidation();
+formValidatorAddPopup.enableValidation();
+
 buttonEditProfile.addEventListener("click", function () {
-  const formValidatorEditPopup = new FormValidator(config, editPopup);
-  formValidatorEditPopup.enableValidation();
-  openPopup(editPopup);
+    openPopup(editPopup);
 });
 
 buttonClosePopupProfile.addEventListener("click", function () {
@@ -59,9 +62,7 @@ function openPopup(popup) {
 }
 
 buttonAddProfile.addEventListener("click", function () {
-  const formValidatorAddPopup = new FormValidator(config, popupAdd);
-  formValidatorAddPopup.enableValidation();
-  placeForm.reset();
+  placeForm.resetValidation();
   openPopup(popupAdd);
 });
 
