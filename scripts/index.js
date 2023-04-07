@@ -7,7 +7,8 @@ formValidatorEditPopup.enableValidation();
 formValidatorAddPopup.enableValidation();
 
 buttonEditProfile.addEventListener("click", function () {
-    openPopup(editPopup);
+  profileForm.reset();
+  openPopup(editPopup);
 });
 
 buttonClosePopupProfile.addEventListener("click", function () {
@@ -62,7 +63,7 @@ function openPopup(popup) {
 }
 
 buttonAddProfile.addEventListener("click", function () {
-  placeForm.resetValidation();
+  placeForm.reset();
   openPopup(popupAdd);
 });
 
@@ -87,7 +88,6 @@ function handleFormPlaceSubmit(evt) {
   };
   elements.prepend(createCard(addCard));
   closePopup(popupAdd);
-  placeForm.reset();
 }
 
 buttonClosePopupZoom.addEventListener("click", function () {

@@ -31,7 +31,7 @@ const cards = [
   },
 ];
 const popups = document.querySelectorAll('.popup');
-const popup = document.querySelector(".popup"); 
+const popup = document.querySelector(".popup"); //для функции closePopup
 const editPopup = document.querySelector(".popup_type_edit");
 const profileForm = document.forms["profile-form"];
 const nameInput = document.querySelector(".popup__input_name");
