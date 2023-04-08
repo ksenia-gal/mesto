@@ -7,8 +7,10 @@ formValidatorEditPopup.enableValidation();
 formValidatorAddPopup.enableValidation();
 
 buttonEditProfile.addEventListener("click", function () {
-  profileForm.reset();
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileAdditionalInfo.textContent;
   openPopup(editPopup);
+  formValidatorEditPopup.resetValidation();
 });
 
 buttonClosePopupProfile.addEventListener("click", function () {
@@ -19,7 +21,7 @@ function handleFormProfileSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAdditionalInfo.textContent = jobInput.value;
-  closePopup(popup);
+  closePopup(editPopup);
 }
 
 profileForm.addEventListener("submit", handleFormProfileSubmit);
@@ -63,8 +65,8 @@ function openPopup(popup) {
 }
 
 buttonAddProfile.addEventListener("click", function () {
-  placeForm.reset();
   openPopup(popupAdd);
+  formValidatorAddPopup.resetValidation();
 });
 
 function closePopup(popup) {
