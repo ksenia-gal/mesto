@@ -65,7 +65,6 @@ function openPopup(popup) {
 }
 
 buttonAddProfile.addEventListener("click", function () {
-  placeForm.reset();
   openPopup(popupAdd);
   formValidatorAddPopup.resetValidation();
 });
@@ -83,7 +82,6 @@ placeForm.addEventListener("submit", handleFormPlaceSubmit);
 
 function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
-  
   const placeName = formInputPlaceName.value;
   const placeLink = formInputPlaceLink.value;
   const addCard = {
@@ -91,6 +89,7 @@ function handleFormPlaceSubmit(evt) {
     link: placeLink,
   };
   elements.prepend(createCard(addCard));
+  placeForm.reset();
   closePopup(popupAdd);
 }
 
