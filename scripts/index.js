@@ -89,7 +89,7 @@ function handleFormPlaceSubmit(evt) {
     link: placeLink,
   };
   elements.prepend(createCard(addCard));
-  placeForm.reset();
+  evt.target.reset();
   closePopup(popupAdd);
 }
 

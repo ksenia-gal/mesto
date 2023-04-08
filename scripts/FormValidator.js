@@ -55,13 +55,12 @@ export class FormValidator {
   }
 
   resetValidation() {
-    this._toggleButtonState(); 
+    this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement) 
+      this._hideInputError(inputElement);
     });
-
-  } 
+  }
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
