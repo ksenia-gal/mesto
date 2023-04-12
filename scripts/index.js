@@ -1,6 +1,13 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
+// Обратить внимание:
+
+// в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов, 
+// а также обработчиков на кнопках, которые открывают попапы через публичные методы
+// все файлы с классами поместите в отдельную папку src/components
+
+
 const formValidatorEditPopup = new FormValidator(config, editPopup);
 const formValidatorAddPopup = new FormValidator(config, popupAdd);
 formValidatorEditPopup.enableValidation();
@@ -25,6 +32,7 @@ function handleFormProfileSubmit(evt) {
 }
 
 profileForm.addEventListener("submit", handleFormProfileSubmit);
+
 function createCard(item) {
   const card = new Card(item, "#cardTemplate", handleImageClick);
   const cardElement = card.generateCard();
