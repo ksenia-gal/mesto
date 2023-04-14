@@ -3,10 +3,9 @@ import { FormValidator } from "./FormValidator.js";
 
 // Обратить внимание:
 
-// в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов, 
+// в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов,
 // а также обработчиков на кнопках, которые открывают попапы через публичные методы
 // все файлы с классами поместите в отдельную папку src/components
-
 
 const formValidatorEditPopup = new FormValidator(config, editPopup);
 const formValidatorAddPopup = new FormValidator(config, popupAdd);
@@ -33,16 +32,28 @@ function handleFormProfileSubmit(evt) {
 
 profileForm.addEventListener("submit", handleFormProfileSubmit);
 
-function createCard(item) {
-  const card = new Card(item, "#cardTemplate", handleImageClick);
-  const cardElement = card.generateCard();
-  return cardElement;
+// class section
+const section = new Section(
+  { items: cards, renderer: renderCard },
+  ".elements"
+);
+section.renderItems();
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  section.addItem(cardElement);
 }
 
-cards.forEach((item) => {
-  const cardElement = createCard(item);
-  elements.append(cardElement);
-});
+function createCard(item) {
+  const card = new Card(item, "#cardTemplate", handleImageClick);
+  const newCard = card.generateCard();
+  return newCard;
+}
+
+// cards.forEach((item) => {
+//   const cardElement = createCard(item);
+//   elements.append(cardElement);
+// });
 
 function handleImageClick(link, name) {
   popupImage.src = link;

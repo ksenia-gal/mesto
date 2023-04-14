@@ -1,13 +1,14 @@
 class PopupWithImage extends Popup {
-    constructor(PopupSelector) {
+    constructor(popupSelector) {
         super(popupselector)
         this.link
         tjis.name
 
     }
-    open( {
+    open() {
         super.open();
-    })
+        // здесь мы еще дополняем, что мы вставляем в картинку линк и вописание нейм
+    }
 }
 
 // наследуется от Popup, вызывает его конструктор, 
