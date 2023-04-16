@@ -1,6 +1,7 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-
+import { Section } from "./Section.js";
+import { Popup } from "./Popup.js";
 // Обратить внимание:
 
 // в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов,
@@ -15,7 +16,7 @@ formValidatorAddPopup.enableValidation();
 buttonEditProfile.addEventListener("click", function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAdditionalInfo.textContent;
-  openPopup(editPopup);
+  open(editPopup);
   formValidatorEditPopup.resetValidation();
 });
 
@@ -44,16 +45,11 @@ function renderCard(cardData) {
   section.addItem(cardElement);
 }
 
-function createCard(item) {
-  const card = new Card(item, "#cardTemplate", handleImageClick);
+function createCard(cardData) {
+  const card = new Card(cardData, "#cardTemplate", handleImageClick);
   const newCard = card.generateCard();
   return newCard;
 }
-
-// cards.forEach((item) => {
-//   const cardElement = createCard(item);
-//   elements.append(cardElement);
-// });
 
 function handleImageClick(link, name) {
   popupImage.src = link;
@@ -62,12 +58,12 @@ function handleImageClick(link, name) {
   openPopup(popupZoom);
 }
 
-function popupCloseByEsc(evt) {
-  if (evt.key === "Escape") {
-    const popupOpened = document.querySelector(".popup_opened");
-    closePopup(popupOpened);
-  }
-}
+// function popupCloseByEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const popupOpened = document.querySelector(".popup_opened");
+//     closePopup(popupOpened);
+//   }
+// }
 
 document.querySelectorAll(".popup__overlay").forEach((item) => {
   item.addEventListener("click", (evt) => {
@@ -78,20 +74,20 @@ document.querySelectorAll(".popup__overlay").forEach((item) => {
   });
 });
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", popupCloseByEsc);
-}
+// function openPopup(popup) {
+//   popup.classList.add("popup_opened");
+//   document.addEventListener("keydown", popupCloseByEsc);
+// }
 
 buttonAddProfile.addEventListener("click", function () {
   openPopup(popupAdd);
   formValidatorAddPopup.resetValidation();
 });
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", popupCloseByEsc);
-}
+// function closePopup(popup) {
+//   popup.classList.remove("popup_opened");
+//   document.removeEventListener("keydown", popupCloseByEsc);
+// }
 
 buttonClosePopupAdd.addEventListener("click", function () {
   closePopup(popupAdd);
