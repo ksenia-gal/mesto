@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { Section } from "./Section.js";
-import { Popup } from "./Popup.js";
+import { PopupWithForm } from "./PopupWithForm.js";
 // Обратить внимание:
 
 // в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов,
@@ -13,6 +13,9 @@ const formValidatorAddPopup = new FormValidator(config, popupAdd);
 formValidatorEditPopup.enableValidation();
 formValidatorAddPopup.enableValidation();
 
+const popupEdit = new PopupWithForm(popupSelector, editPopup);
+const addPopup = new PopupWithForm(popupSelector, popupAdd);
+popupEdit
 buttonEditProfile.addEventListener("click", function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAdditionalInfo.textContent;
@@ -55,9 +58,8 @@ function handleImageClick(link, name) {
   popupImage.src = link;
   popupImage.alt = name;
   popupHeading.textContent = name;
-  openPopup(popupZoom);
+  open(popupZoom);
 }
-
 // function popupCloseByEsc(evt) {
 //   if (evt.key === "Escape") {
 //     const popupOpened = document.querySelector(".popup_opened");
@@ -80,7 +82,7 @@ document.querySelectorAll(".popup__overlay").forEach((item) => {
 // }
 
 buttonAddProfile.addEventListener("click", function () {
-  openPopup(popupAdd);
+  open(popupAdd);
   formValidatorAddPopup.resetValidation();
 });
 

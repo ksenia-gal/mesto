@@ -1,7 +1,6 @@
-class Popup {
+export class Popup {
   constructor(popupSelector) {
     this._popupSelector = popupSelector;
-    this._buttonClosePopupProfile = buttonClosePopupProfile;
   }
   open() {
     this._popupSelector.classList.add("popup_opened");

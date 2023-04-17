@@ -1,27 +1,40 @@
-class PopupWithForm extends Popup {
-    constructor() {
-        
-    }
-    // open остается как есть
-    // close будет другой (исп-я super; при закрытии нужно сбрасывать форму)
-    //будет метод getinputvalues кот будет брать зн-я с инпутов - соберешь инф-ю по полям(что пользователь ввел) и запихнешь эти значения в сабмит
-    // seteventlisteners будет другой - повесить до слушатеь - сабмит на кнопку
+import { Popup } from "./Popup.js";
+
+// наследуется от Popup, вызывает его конструктор, в который передает нужный параметр.
+// При этом принимает еще и второй параметр - колбэк сабмита формы.
+export class PopupWithForm extends Popup {
+  constructor(popupSelector, handleFormSubmit) {
+    super(popupSelector);
+    this._formElement = this._Popup.querySelector(".popup__container");
+    this._inputList = this._formElement.querySelectorAll(".popup__input");
+    this._handleFormSubmit = handleFormSubmit;
+  }
+// close будет другой (исп-я super; при закрытии нужно сбрасывать форму)
+  close() {
+    super.close();
+    this._formElement.reset();
+  }
+// будет метод getinputvalues кот будет брать зн-я с инпутов - соберешь инф-ю по полям(что пользователь 
+// ввел) и запихнешь эти значения в сабмит
+  _getInpuValues() {
+    this._formValues = {};
+    this._inputList.forEach((input) => {
+        this._formValues[input.name] = input.value;
+    });
+    return this._formValues;
+  }
+
+  // seteventlisteners будет другой - повесить до слушатеь - сабмит на кнопку
+  setEventListeners() {
+    super.setEventListeners();
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInpuValues());
+    });
+  }
 }
 
-// наследуется от Popup, вызывает его конструктор, в который передает нужный параметр. 
-// При этом принимает еще и второй параметр - колбэк сабмита формы.
 // Создаем два экземпляра этого класса, в каждый передаем свой коллебек (помимо селектора попапа).
-//  В одном случае форма редактирует данные пользователя на странице, во втором - добавляет новую карточку. 
-//  В качестве идеи - попробуйте совместить функцию коллбека при сабмите формы 
+//  В одном случае форма редактирует данные пользователя на странице, во втором - добавляет новую карточку.
+//  В качестве идеи - попробуйте совместить функцию коллбека при сабмите формы
 //  добавления карточки с аргументом renderer у класса Section
-
-
-
-// Создайте класс PopupWithForm
-// Создайте класс PopupWithForm, который наследует от Popup. Этот класс:
-// Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
-// Содержит приватный метод _getInputValues, который собирает данные всех полей формы.
-// Перезаписывает родительский метод setEventListeners. Метод setEventListeners класса PopupWithForm 
-// должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
-// Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
-// Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
