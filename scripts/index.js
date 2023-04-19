@@ -3,6 +3,7 @@ import { FormValidator } from "./FormValidator.js";
 import { Section } from "./Section.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { PopupWithImage } from "./PopupWithImage.js";
+// import { UserInfo } from "./UserInfo.js";
 // Обратить внимание:
 
 // в основном файле не должно быть больше логики, кроме создания экземпляров и вызова их публичных методов,
@@ -14,17 +15,19 @@ const formValidatorAddPopup = new FormValidator(config, popupAdd);
 formValidatorEditPopup.enableValidation();
 formValidatorAddPopup.enableValidation();
 
-const popupEdit = new PopupWithForm(".popup_type_edit", {
-  function () => {
-    userInformation.setUserInfo(
-      ['popup__input_name'],
-      ['popup__input_information']
-    );
-    popupEdit.close();
-  };
+const popupEditProfile = new PopupWithForm(".popup_type_edit", {
+  handleFormSubmit: (data) => {
+    userInformation.setUserInfo(data)
+  },
+    // popupEditProfile.close();
 });
 
-const addPopup = new PopupWithForm(popupAdd, handleFormPlaceSubmit);
+const addPopup = new PopupWithForm(popupAdd, {
+  handleFormPlaceSubmit: (data) => {
+    section.addItem(cardElement(data));
+  }
+});
+  
 popupEdit.setEventListeners();
 addPopup.setEventListeners();
 
