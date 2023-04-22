@@ -14,7 +14,7 @@ export class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleEscClose (evt) {
+  _handleEscClose(evt) {
     evt.preventDefault();
     if (evt.key === "Escape") {
       this.close();
@@ -22,12 +22,15 @@ export class Popup {
   }
 
   setEventListeners() {
-    this._popupSelector.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-      this.close();
-    }
-  });
-}
+    this._popupSelector.addEventListener("mousedown", (evt) => {
+      if (
+        evt.target.classList.contains("popup__overlay") ||
+        evt.target.classList.contains("popup__close-icon")
+      ) {
+        this.close();
+      }
+    });
+  }
 }
 
 // Аргумент: popupSelector

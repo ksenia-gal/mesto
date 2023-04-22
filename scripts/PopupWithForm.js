@@ -3,7 +3,7 @@ import { Popup } from "./Popup.js";
 // наследуется от Popup, вызывает его конструктор, в который передает нужный параметр.
 // При этом принимает еще и второй параметр - колбэк сабмита формы.
 export class PopupWithForm extends Popup {
-  constructor(popupSelector, { handleFormSubmit }) {
+  constructor( {popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._formElement = document.querySelector(".popup__container");
     this._inputList = this._formElement.querySelectorAll(".popup__input");

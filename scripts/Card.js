@@ -1,5 +1,5 @@
 export class Card {
-  constructor(cards, cardTemplateSelector, handleImageClick) {
+  constructor(cards, cardTemplateSelector, { handleImageClick }) {
     this._link = cards.link;
     this._name = cards.name;
     this._alt = cards.name;
@@ -34,7 +34,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this._link, this._name);
+      this._handleImageClick();
     });
   }
 
@@ -56,13 +56,12 @@ export class Card {
 
 // Аргументы: { data, handleCardClick }, cardSelector
 // data - данные которые вы уже передавали в карточку
-// handleCardClick - функция, которая описывает поведение при нажатии 
-// на карточку. Внутри должен быть вызов публичного метода экземпляра 
+// handleCardClick - функция, которая описывает поведение при нажатии
+// на карточку. Внутри должен быть вызов публичного метода экземпляра
 // класса PopupWithImage (о котором написано ниже)
-// так как логика открытия попапа описывается теперь в аргументе handleCardClick, 
+// так как логика открытия попапа описывается теперь в аргументе handleCardClick,
 // то все костыли которые раньше были связаны с этим (импортирование внешних функций в класс Card) можно убрать
 
-
 // Преобразуйте класс Card
-// Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. 
+// Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick.
 // Эта функция должна открывать попап с картинкой при клике на карточку.

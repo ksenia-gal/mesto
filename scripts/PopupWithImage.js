@@ -1,16 +1,16 @@
 import { Popup } from "./Popup.js";
 export class PopupWithImage extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this.link;
-    this.name;
+    this._popupHeading = this._popupSelector.querySelector('.popup__caption');
+    this._popupImage = this._popupSelector.querySelector('.popup__image');
   }
-  open() {
+  open = (item) => {
     super.open();
     // здесь мы еще дополняем, что мы вставляем в картинку линк и вописание нейм
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupHeading.textContent = name;
+    this._popupImage.src = item.link;
+    this._popupImage.alt = item.name;
+    this._popupHeading.textContent = item.name;
   }
 }
 
