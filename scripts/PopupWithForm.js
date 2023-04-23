@@ -3,27 +3,26 @@ import { Popup } from "./Popup.js";
 // наследуется от Popup, вызывает его конструктор, в который передает нужный параметр.
 // При этом принимает еще и второй параметр - колбэк сабмита формы.
 export class PopupWithForm extends Popup {
-  constructor( {popupSelector, handleFormSubmit }) {
+  constructor( popupSelector, {handleFormSubmit }) {
     super(popupSelector);
-    this._formElement = document.querySelector(".popup__container");
-    this._inputList = this._formElement.querySelectorAll(".popup__input");
+    this._formElement = this._popupSelector.querySelector(".popup__container");
     this._handleFormSubmit = handleFormSubmit;
   }
 
 // будет метод getinputvalues кот будет брать зн-я с инпутов - соберешь инф-ю по полям(что пользователь 
 // ввел) и запихнешь эти значения в сабмит
-  _getInpuValues() {
+  _getInputValues() {
+    this._inputList = this._popupSelector.querySelectorAll(".popup__input");
     this._formValues = {};
     this._inputList.forEach(input => 
-        this._formValues[input.id] = input.value);
+        this._formValues[input.name] = input.value);
     return this._formValues;
   }
 
   // seteventlisteners будет другой - повесить до слушатеь - сабмит на кнопку
   setEventListeners() {
     super.setEventListeners();
-    this._formElement.addEventListener("submit", () => {
-      evt.preventDefault();
+    this._popupSelector.addEventListener("submit", () => {
       this._handleFormSubmit(this._getInputValues());
       this.close();
     });
