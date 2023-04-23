@@ -1,6 +1,34 @@
 import { Popup } from "./Popup.js";
+export class PopupWithForm extends Popup {
+  constructor(popupSelector, callbackSubmit) {
+    super(popupSelector)
+    this._callbackSubmit = callbackSubmit
+    this._form = this._popupSelector.querySelector(".popup__container")
+    this._inputs = this._popupSelector.querySelectorAll(".popup__input");
+  }
 
-// наследуется от Popup, вызывает его конструктор, в который передает нужный параметр.
+  _getInputValues() {
+    const values = {}
+    this._inputs.forEach((input) => {
+      values[input.name] = input.value
+    })
+    return values
+  }
+
+  close() {
+    super.close()
+    this._form.reset()
+  }
+
+  setEventListeners() {
+    super.setEventListeners()
+    this._form.addEventListener("submit", (event) => {
+      event.preventDefault()
+      this._callbackSubmit(this._getInputValues())
+    })
+  }
+}
+/*// наследуется от Popup, вызывает его конструктор, в который передает нужный параметр.
 // При этом принимает еще и второй параметр - колбэк сабмита формы.
 export class PopupWithForm extends Popup {
   constructor( popupSelector, {handleFormSubmit }) {
@@ -38,4 +66,4 @@ export class PopupWithForm extends Popup {
 // Создаем два экземпляра этого класса, в каждый передаем свой коллебек (помимо селектора попапа).
 //  В одном случае форма редактирует данные пользователя на странице, во втором - добавляет новую карточку.
 //  В качестве идеи - попробуйте совместить функцию коллбека при сабмите формы
-//  добавления карточки с аргументом renderer у класса Section
+//  добавления карточки с аргументом renderer у класса Section*/

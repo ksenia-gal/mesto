@@ -17,12 +17,14 @@ formValidatorEditPopup.enableValidation();
 formValidatorAddPopup.enableValidation();
 
 // class PopupWithForm #1
-const popupEditProfile = new PopupWithForm('.popup_type_edit',
+/*const popupEditProfile = new PopupWithForm('.popup_type_edit',
 {handleFormSubmit: (item) => {
     userInfo.setUserInfo(item)
   }
 });
-popupEditProfile.setEventListeners();
+popupEditProfile.setEventListeners();*/
+
+
 
 // class PopupWithForm #2
 // const addPopup = new PopupWithForm(popupAdd, {
@@ -33,13 +35,41 @@ popupEditProfile.setEventListeners();
 // addPopup.setEventListeners();
 
 // кнопка открытия попапа профиль
-buttonEditProfile.addEventListener("click", () => {
+/*buttonEditProfile.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.profileName;
   jobInput.value = currentUserInfo.profileAdditionalInfo;
   popupEditProfile.open();
   formValidatorEditPopup.resetValidation();
-});
+});*/
+
+//передача текста на страницу профиля редактирования полей Имя, О себе
+function formValues(value) {
+  userInfo.setUserInfo(value.nameInput, value.jobInput)
+  popupEditProfile.close()
+}
+
+//функция открытия попапа редактирования профиля
+function openEditProfile() {
+  const { userNameElement, userInfoElement } = userInfo.getUserInfo()
+  nameInput.value = userNameElement
+  jobInput.value = userInfoElement
+  popupEditProfile.open();
+  formValidatorEditPopup.resetValidation();
+  /*formEditValidator.disableSubmitButton()*/
+  /*classEditPopup.open()*/
+}
+
+
+//создание класса редактирования профиля
+const popupEditProfile = new PopupWithForm(
+  ".popup_type_edit",
+  formValues
+)
+popupEditProfile.setEventListeners()
+
+buttonEditProfile.addEventListener("click", () => openEditProfile())
+console.log(buttonEditProfile)
 
 // class section
 const section = new Section(
@@ -63,7 +93,6 @@ function createCard(item) {
   const newCard = card.generateCard();
   return newCard;
 }
-
 
 const popupZoom = new PopupWithImage(".popup_type_zoom");
 popupZoom.setEventListeners();

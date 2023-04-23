@@ -6,13 +6,13 @@ export class UserInfo {
 
   getUserInfo() {
     return {
-      profileName: this._userNameElement.textContent,
-      profileAdditionalInfo: this._userInfoElement.textContent,
+      userNameElement: this._userNameElement.textContent,
+      userInfoElement: this._userInfoElement.textContent,
     };
   }
 
-  setUserInfo({ profileName, profileAdditionalInfo }) {
-    this._userNameElement.textContent = profileName;
-    this._userInfoElement.textContent = profileAdditionalInfo;
+  setUserInfo(userNameElement, userInfoElement) {
+    this._userNameElement.textContent = userNameElement;
+    this._userInfoElement.textContent = userInfoElement;
   }
 }
