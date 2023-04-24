@@ -1,9 +1,9 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { Section } from "./Section.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
+import { Card } from "../../src/components/Card.js";
+import { FormValidator } from "../../src/components/FormValidator.js";
+import { Section } from "../../src/components/Section.js";
+import { PopupWithImage } from "../../src/components/PopupWithImage.js";
+import { PopupWithForm } from "../../src/components/PopupWithForm.js";
+import { UserInfo } from "../../src/components/UserInfo.js";
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__title",
