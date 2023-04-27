@@ -33,10 +33,15 @@ formValidatorAddPopup.enableValidation()
 const popupAddCard = new PopupWithForm(".popup_type_add", handleFormPlaceSubmit)
 popupAddCard.setEventListeners()
 
-function handleFormPlaceSubmit(item) {
-  renderCard(item)
+function handleFormPlaceSubmit() {
+  renderCard(formInputPlaceName.value, formInputPlaceLink.value);
   popupAddCard.close()
 }
+
+buttonAddProfile.addEventListener("click", () => {
+  popupAddCard.open()
+  formValidatorAddPopup.resetValidation()
+})
 
 function formValues(value) {
   userInfo.setUserInfo(value.nameInput, value.jobInput)
@@ -76,9 +81,6 @@ function createCard(item) {
 const popupZoom = new PopupWithImage(".popup_type_zoom")
 popupZoom.setEventListeners()
 
-buttonAddProfile.addEventListener("click", () => {
-  popupAddCard.open()
-  formValidatorAddPopup.resetValidation()
-})
+
 
 
