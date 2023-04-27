@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
   <body class="page">
     <header class="header">
       <img
-        src="./images/header__logo.svg"
+      src="<%=require('./images/header__logo.svg')%>"
         alt="Логотип заголовка"
         class="header__logo"
       >
@@ -18,7 +17,7 @@
     <main class="content">
       <section class="profile">
         <img
-          src="./images/Avatar.png"
+          src="<%=require('./images/Avatar.png')%>"
           alt="Фотография Кусто"
           class="profile__avatar"
         >
@@ -27,7 +26,7 @@
           <h2 class="profile__subtitle">Исследователь океана</h2>
           <button aria-label="Редактировать" class="profile__edit-button">
             <img
-              src="./images/Vector-2.png"
+              src="<%=require('./images/Vector-2.png')%>"
               alt="Кнопка редактирования"
               class="profile__pen-icon"
             >
@@ -35,7 +34,7 @@
         </div>
         <button aria-label="Добавить" class="profile__add-button">
           <img
-            src="./images/Vectoradd.png"
+            src="<%=require('./images/Vectoradd.png')%>"
             alt="Значок плюса"
             class="profile__plus-icon"
           >
@@ -49,7 +48,7 @@
             <button class="element__delete-button">
               <img
                 class="element__trash-icon"
-                src="./images/Trash.svg"
+                src="<%=require('./images/Trash.svg')%>"
                 alt="Значок корзины"
               >
             </button>
@@ -100,7 +99,7 @@
             class="popup__close-button"
           >
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="Значок крестика"
               class="popup__close-icon"
             >
@@ -142,7 +141,7 @@
             class="popup__close-button"
           >
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="Значок крестика"
               class="popup__close-icon"
             >
@@ -162,7 +161,7 @@
             class="popup__close-button"
           >
             <img
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="Значок крестика"
               class="popup__close-icon"
             >
@@ -170,7 +169,6 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/constants.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
+   
   </body>
 </html>
