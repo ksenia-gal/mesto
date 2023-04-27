@@ -11,4 +11,8 @@ export class PopupWithImage extends Popup {
     this._popupImage.alt = item.name;
     this._popupHeading.textContent = item.name;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 48b236143c9efd00a0338258aa7319651af996ae
