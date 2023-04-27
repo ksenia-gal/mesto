@@ -33,6 +33,11 @@ formValidatorAddPopup.enableValidation()
 const popupAddCard = new PopupWithForm(".popup_type_add", handleFormPlaceSubmit)
 popupAddCard.setEventListeners()
 
+function handleFormPlaceSubmit(item) {
+  renderCard(item)
+  popupAddCard.close()
+}
+
 function formValues(value) {
   userInfo.setUserInfo(value.nameInput, value.jobInput)
   popupEditProfile.close()
@@ -54,8 +59,8 @@ const section = new Section({ items: cards, renderer: renderCard }, ".elements")
 section.renderItems()
 
 function renderCard(item) {
-  const cardElement = createCard(item)
-  section.addItem(cardElement)
+  // const cardElement = createCard(item)
+  section.addItem(createCard(item))
 }
 
 function createCard(item) {
@@ -76,17 +81,4 @@ buttonAddProfile.addEventListener("click", () => {
   formValidatorAddPopup.resetValidation()
 })
 
-placeForm.addEventListener("submit", handleFormPlaceSubmit)
 
-function handleFormPlaceSubmit(evt) {
-  evt.preventDefault()
-  const placeName = formInputPlaceName.value
-  const placeLink = formInputPlaceLink.value
-  const addCard = {
-    name: placeName,
-    link: placeLink,
-  }
-  elements.prepend(createCard(addCard))
-  evt.target.reset()
-  popupAddCard.close()
-}
