@@ -1,17 +1,14 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "description": "Обучающий проект на языке java-script.",
+  "description": "Обучающий проект на языке java script",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && webpack --mode production",
+    "build": "rm -rf dist && webpack",
     "dev": "webpack serve"
-   
   },
- 
-  "author": "",
+  "author": "Ksenia G",
   "license": "ISC",
- 
   "homepage": "",
   "devDependencies": {
     "@babel/core": "^7.20.12",

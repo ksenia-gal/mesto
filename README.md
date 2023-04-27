@@ -14,8 +14,8 @@
 * массивы
 * валидация форм
 * классы
-* модули
 * export
 * import
+* модули
 
 * [Ссылка на GitHub Pages](https://ksenia-gal.github.io/mesto/)
