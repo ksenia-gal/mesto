@@ -55,14 +55,8 @@ buttonAddProfile.addEventListener("click", () => {
   formValidatorAddPopup.resetValidation();
 });
 
-function handleFormPlaceSubmit(evt) {
-  const placeName = formInputPlaceName.value;
-  const placeLink = formInputPlaceLink.value;
-  const addCard = {
-    name: placeName,
-    link: placeLink,
-  };
-  elements.prepend(createCard(addCard));
+function handleFormPlaceSubmit(item) {
+ renderCard({name: item.description, link: item.image});
   popupAddCard.close();
 }
 
@@ -72,7 +66,7 @@ const popupAddCard = new PopupWithForm(
 );
 popupAddCard.setEventListeners();
 
-function formValues(value) {
+function submitEditProfileForm(value) {
   userInfo.setUserInfo(value.nameInput, value.jobInput);
   popupEditProfile.close();
 }
@@ -85,7 +79,7 @@ function openEditProfile() {
   formValidatorEditPopup.resetValidation();
 }
 
-const popupEditProfile = new PopupWithForm(".popup_type_edit", formValues);
+const popupEditProfile = new PopupWithForm(".popup_type_edit", submitEditProfileForm);
 popupEditProfile.setEventListeners();
 buttonEditProfile.addEventListener("click", () => openEditProfile());
 

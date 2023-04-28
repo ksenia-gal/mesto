@@ -2,8 +2,8 @@ import { Popup } from "../../src/components/Popup.js";
 export class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-    this._popupHeading = this._popupSelector.querySelector(".popup__caption");
-    this._popupImage = this._popupSelector.querySelector(".popup__image");
+    this._popupHeading = this._popupElement.querySelector(".popup__caption");
+    this._popupImage = this._popupElement.querySelector(".popup__image");
   }
   open = (item) => {
     super.open();
