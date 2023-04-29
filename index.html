@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Место</title>
+  <script defer src="index.5835ee39b4189bd478e8.js"></script><link href="index.css" rel="stylesheet"></head>
+  <body class="page">
+    <header class="header">
+      <img
+      src="03b78ada3425e9132ff3.svg"
+        alt="Логотип заголовка"
+        class="header__logo"
+      >
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img
+          src="727b5baa123f981bf5e0.png"
+          alt="Фотография Кусто"
+          class="profile__avatar"
+        >
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <h2 class="profile__subtitle">Исследователь океана</h2>
+          <button aria-label="Редактировать" class="profile__edit-button">
+            <img
+              src="2b48ed0703adbb9d5e89.png"
+              alt="Кнопка редактирования"
+              class="profile__pen-icon"
+            >
+          </button>
+        </div>
+        <button aria-label="Добавить" class="profile__add-button">
+          <img
+            src="e771cd613bd25878a549.png"
+            alt="Значок плюса"
+            class="profile__plus-icon"
+          >
+        </button>
+      </section>
+
+      <section aria-label="Галерея" class="elements">
+        <template id="cardTemplate" class="card">
+          <div class="element">
+            <img class="element__image">
+            <button class="element__delete-button">
+              <img
+                class="element__trash-icon"
+                src="823b0cf1b0b7e9cb7cad.svg"
+                alt="Значок корзины"
+              >
+            </button>
+            <div class="element__block">
+              <p class="element__title"></p>
+              <button type="button" class="element__like-button"></button>
+            </div>
+          </div>
+        </template>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup popup_type_edit">
+      <div class="popup__overlay">
+        <form name="profile-form" class="popup__container" novalidate>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            name="nameInput"
+            id="name-input"
+            placeholder="Введите имя"
+            class="popup__input popup__input_name"
+            minlength="2"
+            maxlength="40"
+            required
+          >
+          <span class="name-input-error popup__input-error"></span>
+          <input
+            type="text"
+            name="jobInput"
+            id="information-input"
+            placeholder="Введите дополнительную информацию"
+            class="popup__input popup__input_information"
+            minlength="2"
+            maxlength="200"
+            required
+          >
+          <span class="information-input-error popup__input-error"></span>
+          <button class="popup__submit popup__submit_save" type="submit">
+            Сохранить
+          </button>
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="popup__close-button"
+          >
+            <img
+              src="2ceb783afbab75916ddc.svg"
+              alt="Значок крестика"
+              class="popup__close-icon"
+            >
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_add">
+      <div class="popup__overlay">
+        <form name="place-form" class="form popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <input
+          name="description"
+            id="place-name-input"
+            type="text"
+            placeholder="Введите название места"
+            class="popup__input popup__input_place-name"
+            minlength="2"
+            maxlength="30"
+            required
+          >
+          <span class="place-name-input-error popup__input-error"></span>
+          <input
+          name="image"
+            id="link-input"
+            type="url"
+            placeholder="Введите ссылку на изображение"
+            class="popup__input popup__input_image"
+            required
+          >
+          <span class="link-input-error popup__input-error"></span>
+          <button class="popup__submit popup__submit_create" type="submit">
+            Создать
+          </button>
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="popup__close-button"
+          >
+            <img
+              src="2ceb783afbab75916ddc.svg"
+              alt="Значок крестика"
+              class="popup__close-icon"
+            >
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_zoom">
+      <div class="popup__overlay popup__overlay_zoom">
+        <div class="popup__container popup__container_zoom">
+          <img class="popup__image" alt="#" src="#">
+          <p class="popup__caption"></p>
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="popup__close-button"
+          >
+            <img
+              src="2ceb783afbab75916ddc.svg"
+              alt="Значок крестика"
+              class="popup__close-icon"
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+   
+  </body>
+</html>
