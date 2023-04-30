@@ -7,10 +7,7 @@ import {
   buttonEditProfile,
   buttonAddProfile,
   nameInput,
-  jobInput,
-  formInputPlaceLink,
-  formInputPlaceName,
-  elements,
+  jobInput
 } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -18,6 +15,8 @@ import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
+
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__title",
@@ -44,7 +43,7 @@ function createCard(item) {
   const card = new Card(item, "#cardTemplate", {
     handleImageClick: () => {
       popupZoom.open(item);
-    },
+    }, handleDeleteButtonClick
   });
   const newCard = card.generateCard();
   return newCard;
@@ -70,6 +69,16 @@ function submitEditProfileForm(value) {
   userInfo.setUserInfo(value.nameInput, value.jobInput);
   popupEditProfile.close();
 }
+
+// создание экземпляра класса PopupWithConfirmation
+const popupConfirmation = new PopupWithConfirmation('.popup_type_confirmation');
+popupConfirmation.setEventListeners();
+
+// ф-я открытия PopupWithConfirmation
+ function handleDeleteButtonClick () {
+  popupConfirmation.setSubmitConfirmation();
+  popupConfirmation.open();
+ }
 
 function openEditProfile() {
   const { userNameElement, userInfoElement } = userInfo.getUserInfo();

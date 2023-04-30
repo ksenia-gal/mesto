@@ -1,10 +1,11 @@
 export class Card {
-  constructor(cards, cardTemplateSelector, { handleImageClick }) {
+  constructor(cards, cardTemplateSelector, { handleImageClick, handleDeleteButtonClick }) {
     this._link = cards.link;
     this._name = cards.name;
     this._alt = cards.name;
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteButtonClick = handleDeleteButtonClick;
   }
 
   _getTemplate() {
