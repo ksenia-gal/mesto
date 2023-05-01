@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -16,5 +18,7 @@
   background-image: url(../../../images/Vector\ \(1\).svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 26px 26px;
+  /* background-size: 26px 26px; */
+  transition: 0.3s ease-in-out;
+  
 }
