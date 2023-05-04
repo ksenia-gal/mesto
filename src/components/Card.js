@@ -1,11 +1,16 @@
 export class Card {
-  constructor(cards, cardTemplateSelector, { handleImageClick, handleDeleteButtonClick }) {
+  constructor(cards, cardTemplateSelector, { handleImageClick, handleDeleteButtonClick, handleLikeButtonClick }, userId) {
     this._link = cards.link;
     this._name = cards.name;
     this._alt = cards.name;
+    this._userId = userId;
+    this._cardId = cards._id;
+    this._authorId = cards.authorId;
+    this._likes = cards.likes;
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteButtonClick = handleDeleteButtonClick;
+    this._handleLikeButtonClick = handleLikeButtonClick;
   }
 
   _getTemplate() {
@@ -17,22 +22,38 @@ export class Card {
     return cardElement;
   }
 
-  _handleLikeButtonClick() {
+  handleLikeButtonClick() {
     this._likeButton.classList.toggle("element__like-button_active");
   }
 
-  _handleDeleteButtonClick() {
+  handleDeleteButtonClick() {
     this._element.remove();
+    //this._element = null;
   }
 
+  _likedCard() {
+    return this._likes.some(like => {
+      return like._id === this._userId;
+    });
+  }
+// Отображение количества лайков карточки; возможно лучше переместить в другое место
+countLikes(likes) {
+  this._likes = likes;
+  this._element.querySelector('.element__count-like').textContent = likes.length;
+  if (this._likedCard()) {
+    this._likeButton.classList.add('element__like-button_active');
+  } else {
+    this._likeButton.classList.remove('element__like-button_active');
+  }
+}
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => {
-      this._handleLikeButtonClick();
-    });
+      this.handleLikeButtonClick();
+    }); //
 
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteButtonClick();
-    });
+      this.handleDeleteButtonClick();
+    }); 
 
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick();
@@ -43,10 +64,17 @@ export class Card {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector(".element__image");
     this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
+    this._cardImage.alt = this._name; //возможно нужно исправить
     this._element.querySelector(".element__title").textContent = this._name;
     this._likeButton = this._element.querySelector(".element__like-button");
     this._deleteButton = this._element.querySelector(".element__delete-button");
+
+    // Сделайте так, чтобы иконка удаления была только на созданных вами карточках
+    if (this._userId !== this._authorId) {
+      this._deleteButton.remove();
+    }
+
+    this.countLikes(this._likes);
 
     this._setEventListeners();
     return this._element;
