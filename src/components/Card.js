@@ -1,12 +1,12 @@
 export class Card {
-  constructor(cards, cardTemplateSelector, { handleImageClick, handleDeleteButtonClick, handleLikeButtonClick }, userId) {
-    this._link = cards.link;
-    this._name = cards.name;
-    this._alt = cards.name;
+  constructor(cardObject, cardTemplateSelector, { handleImageClick, handleDeleteButtonClick, handleLikeButtonClick }, userId) {
+    this._link = cardObject.link;
+    this._name = cardObject.name;
+    this._alt = cardObject.name;
     this._userId = userId;
-    this._cardId = cards._id;
-    this._authorId = cards.authorId;
-    this._likes = cards.likes;
+    this._cardId = cardObject._id;
+    this._authorId = cardObject.authorId;
+    this._likes = cardObject.likes;
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteButtonClick = handleDeleteButtonClick;
