@@ -46,6 +46,7 @@
       </section>
 
       <section aria-label="Галерея" class="elements">
+
         <template id="cardTemplate" class="card">
           <div class="element">
             <img class="element__image">
@@ -65,6 +66,7 @@
             </div>
           </div>
         </template>
+
       </section>
     </main>
     <footer class="footer">
@@ -73,11 +75,11 @@
 
     <div class="popup popup_type_edit">
       <div class="popup__overlay">
-        <form name="profile-form" class="popup__container" novalidate>
+        <form name="profileForm" class="form popup__container" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             type="text"
-            name="nameInput"
+            name="name"
             id="name-input"
             placeholder="Введите имя"
             class="popup__input popup__input_name"
@@ -88,7 +90,7 @@
           <span class="name-input-error popup__input-error"></span>
           <input
             type="text"
-            name="jobInput"
+            name="about"
             id="information-input"
             placeholder="Введите дополнительную информацию"
             class="popup__input popup__input_information"
@@ -97,7 +99,7 @@
             required
           >
           <span class="information-input-error popup__input-error"></span>
-          <button class="popup__submit popup__submit_save" type="submit">
+          <button class="popup__submit popup__submit_save popup__submit_disabled" type="submit">
             Сохранить
           </button>
           <button
@@ -117,10 +119,10 @@
 
     <div class="popup popup_type_add">
       <div class="popup__overlay">
-        <form name="place-form" class="form popup__container">
+        <form name="placeForm" class="form popup__container">
           <h2 class="popup__title">Новое место</h2>
           <input
-          name="description"
+          name="name"
             id="place-name-input"
             type="text"
             placeholder="Введите название места"
@@ -131,7 +133,7 @@
           >
           <span class="place-name-input-error popup__input-error"></span>
           <input
-          name="image"
+          name="link"
             id="link-input"
             type="url"
             placeholder="Введите ссылку на изображение"
@@ -139,7 +141,7 @@
             required
           >
           <span class="link-input-error popup__input-error"></span>
-          <button class="popup__submit popup__submit_create" type="submit">
+          <button class="popup__submit popup__submit_create popup__submit_disabled" type="submit">
             Создать
           </button>
           <button
@@ -181,7 +183,7 @@
       <div class="popup__overlay">
           <form name="confirmation-form" class="form popup__container popup__container_confirmation">
           <h2 class="popup__title">Вы уверены?</h2>
-          <button class="popup__submit popup__submit_confirm" type="submit">
+          <button class="popup__submit popup__submit_confirm popup__submit_disabled" type="submit">
             Да
           </button>
           <button
@@ -202,10 +204,10 @@
 
     <div class="popup popup_type_new-avatar">
       <div class="popup__overlay">
-        <form name="avatar-form" class="form popup__container">
+        <form name="avatarForm" class="form popup__container">
           <h2 class="popup__title popup__title_avatar">Обновить аватар</h2>
           <input
-          name="link"
+          name="avatar"
             id="new-avatar-input"
             type="url"
             placeholder="Ссылка на изображение"
@@ -213,7 +215,7 @@
             required
           >
           <span class="new-avatar-input-error popup__input-error"></span>
-          <button class="popup__submit popup__submit_save" type="submit">
+          <button class="popup__submit popup__submit_save popup__submit_disabled" type="submit">
             Сохранить
           </button>
           <button
@@ -230,7 +232,5 @@
         </form>
       </div>
     </div>
-
-    
   </body>
 </html>
