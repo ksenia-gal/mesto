@@ -29,6 +29,7 @@ export {
   avatarProfile,
 }
 
+
 // const editPopup = document.querySelector(".popup_type_edit")
 // const nameInput = document.querySelector(".popup__input_name")
 // const jobInput = document.querySelector(".popup__input_information")

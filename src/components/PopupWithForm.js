@@ -1,10 +1,10 @@
 import Popup from "../components/Popup.js"
 
 export default class PopupWithForm extends Popup {
-  constructor(selector, callbackSubmit) {
-    super(selector)
+  constructor(popupSelector, callbackSubmit) {
+    super(popupSelector)
     this._callbackSubmit = callbackSubmit
-    this._form = this._popup.querySelector(".form")
+    this._form = this._popupElement.querySelector(".form")
     console.log(this._form);
     this._inputs = [...this._form.querySelectorAll(".popup__input")]
     this._form.addEventListener("submit", (event) => {
@@ -41,7 +41,7 @@ export default class PopupWithForm extends Popup {
 }
 
 // import { Popup } from "../../src/components/Popup.js";
-// export class PopupWithForm extends Popup {
+// export default class PopupWithForm extends Popup {
 //   constructor(popupSelector, callbackSubmit) {
 //     super(popupSelector);
 //     this._callbackSubmit = callbackSubmit;

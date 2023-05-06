@@ -23,13 +23,13 @@ import FormValidator from "../components/FormValidator.js"
 import Section from "../components/Section.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js"
-import PopupConfirmation from "../components/PopupWithConfirmation.js"
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js"
 import UserInfo from "../components/UserInfo.js"
-
+import Api from "../components/Api.js"
 let userId
 
 //импорт класса-утилиты Api
-import Api from "../utils/Api.js"
+
 
 // Функция создания карточек по экземпляру класса Card
 function createCard(data) {
@@ -41,18 +41,18 @@ function createCard(data) {
     userId,
     async () => {
       try {
-        const response = await api.addLike(data._id)
-        card.like()
-        card.likesCount(response)
+        const response = await api.putLike(data._id)
+        card.handleLikeButtonClick()
+        card.countLikes(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
       }
     },
     async () => {
       try {
-        const response = await api.removeLike(data._id)
+        const response = await api.deleteLike(data._id)
         card.dislike()
-        card.likesCount(response)
+        card.countLikes(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
       }
@@ -71,9 +71,9 @@ function openPopupImage(name, link) {
 }
 
 // Форма редактирования профиля
-async function handleSubmitFormEditProfile(data) {
+async function handleSubmitFormEditProfile(profileData) {
   try {
-    const userProfile = await api.editProfileUserInfo(data)
+    const userProfile = await api.editProfile(profileData)
     user.setUserInfo(userProfile)
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
@@ -83,7 +83,7 @@ async function handleSubmitFormEditProfile(data) {
 // Форма обновления аватара
 async function handleSubmitFormUpdateAvatar(data) {
   try {
-    const userProfile = await api.updateProfileUserAvatar(data)
+    const userProfile = await api.changeAvatar(data)
     user.setUserInfo(userProfile)
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
@@ -91,9 +91,9 @@ async function handleSubmitFormUpdateAvatar(data) {
 }
 
 // Форма добавления карточек
-async function handleSubmitFormAddCard(data) {
+async function handleSubmitFormAddCard(cardData) {
   try {
-    const newCard = await api.addNewCard(data)
+    const newCard = await api.addNewCard(cardData)
     cardList.addItem(createCard(newCard))
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
@@ -102,21 +102,24 @@ async function handleSubmitFormAddCard(data) {
 
 // Для каждого попапа создавайте свой экземпляр класса PopupWithForm
 const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
-
+popupImage.setEventListeners();
 const popupAdd = new PopupWithForm(
   popupConfig.popupAddCardSelector,
   handleSubmitFormAddCard
 )
+popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(
   popupConfig.popupEditSelector,
   handleSubmitFormEditProfile
 )
+popupEdit.setEventListeners();
 
 const popupAvatar = new PopupWithForm(
   popupConfig.popupUpdateAvatarSelector,
   handleSubmitFormUpdateAvatar
 )
+popupAvatar.setEventListeners();
 
 const user = new UserInfo({
   name: nameProfile,
@@ -129,7 +132,7 @@ profileEditButton.addEventListener(
   () => {
     popupEdit.open()
     popupEdit.setInputValue(user.getUserInfo())
-    validatorFormEditProfile.disableSubmitButton()
+    validatorFormEditProfile.disableButton()
   },
   false
 )
@@ -138,7 +141,7 @@ profileUpdateAvatar.addEventListener(
   "click",
   () => {
     popupAvatar.open()
-    validatorFormUpdateAvatar.disableSubmitButton()
+    validatorFormUpdateAvatar.disableButton()
   },
   false
 )
@@ -147,7 +150,7 @@ profileAddButton.addEventListener(
   "click",
   () => {
     popupAdd.open()
-    validatorFormAddProfile.disableSubmitButton()
+    validatorFormAddProfile.disableButton()
   },
   false
 )
@@ -174,11 +177,11 @@ const validatorFormUpdateAvatar = new FormValidator(
 
 validatorFormUpdateAvatar.enableValidation()
 
-const popupConfirmation = new PopupConfirmation(
+const popupConfirmation = new PopupWithConfirmation(
   popupConfig.popupDeleteSelector,
   async (card) => {
     api
-      .removeCard(card._id)
+      .deleteCard(card._id)
       .then(() => {
         card.remove()
         popupConfirmation.close()
@@ -186,6 +189,7 @@ const popupConfirmation = new PopupConfirmation(
       .catch((error) => console.log(`Ошибка: ${error}`))
   }
 )
+popupConfirmation.setEventListeners();
 
 // Загружка карточек с сервера
 const cardList = new Section(
@@ -210,7 +214,7 @@ const api = new Api({
 });
 
 // Отрисовка карточек с сервера + отрисовка данных пользователя
-Promise.all([api.getRealUserInfo(), api.getInitialCards()])
+Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userProfile, cards]) => {
     user.setUserInfo(userProfile)
     userId = userProfile._id
