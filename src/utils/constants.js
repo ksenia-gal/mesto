@@ -27,19 +27,27 @@ export {
   nameProfile,
   aboutProfile,
   avatarProfile,
+  popupAddCard,
+  popupZoom,
+  avatarPopup,
+  editPopup,
+  popupWithConfirmation
+  
 }
 
 
-// const editPopup = document.querySelector(".popup_type_edit")
+const editPopup = ".popup_type_edit"
+const popupAddCard = ".popup_type_add"
+const popupZoom = ".popup_type_zoom"
+const avatarPopup = ".popup_type_new-avatar"
+const popupWithConfirmation = ".popup_type_confirmation"
 // const nameInput = document.querySelector(".popup__input_name")
 // const jobInput = document.querySelector(".popup__input_information")
-// const popupAdd = document.querySelector(".popup_type_add")
-// const popupZoom = document.querySelector(".popup_type_zoom")
-// const avatarPopup = document.querySelector(".popup_type_new_avatar")
-// const buttonEditProfile = document.querySelector(".profile__edit-button")
-// const buttonEditAvatar = document.querySelector(".profile__avatar-button")
+
+// const buttonEditProfile = ".profile__edit-button"
+// const buttonEditAvatar = ".profile__avatar-button"
 // const elements = document.querySelector(".elements")
-// const buttonAddProfile = document.querySelector(".profile__add-button")
+// const buttonAddProfile = ".profile__add-button"
 // const placeForm = document.forms["place-form"]
 // const formInputPlaceName = placeForm.querySelector(".popup__input_place-name")
 // const formInputPlaceLink = placeForm.querySelector(".popup__input_image")

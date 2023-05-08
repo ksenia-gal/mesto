@@ -1,9 +1,8 @@
-//подключаю index.css к файлу
-import "./index.css"
+import "./index.css";
 
 //импорты переменных-конфигов
-import { popupConfig } from "../utils/popupConfig.js"
-import { validationConfig } from "../utils/validationConfig.js"
+// import { popupConfig } from "../utils/popupConfig.js"; //delete config
+import { validationConfig } from "../utils/validationConfig.js"; //rename config
 
 import {
   profileUpdateAvatar,
@@ -15,23 +14,47 @@ import {
   nameProfile,
   aboutProfile,
   avatarProfile,
-} from "../utils/constants.js"
+  popupZoom,
+  avatarPopup,
+  editPopup,
+  popupAddCard,
+  popupWithConfirmation,
+} from "../utils/constants.js";
 
 //импорты классов
-import Card from "../components/Card.js"
-import FormValidator from "../components/FormValidator.js"
-import Section from "../components/Section.js"
-import PopupWithImage from "../components/PopupWithImage.js"
-import PopupWithForm from "../components/PopupWithForm.js"
-import PopupWithConfirmation from "../components/PopupWithConfirmation.js"
-import UserInfo from "../components/UserInfo.js"
-import Api from "../components/Api.js"
-let userId
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
+let userId; //?
+// import "./index.css";
+// import {
+//   cards,
+//   config,
+//   editPopup,
+//   popupAdd,
+//   buttonEditProfile,
+//   buttonAddProfile,
+//   nameInput,
+//   jobInput,
+//   buttonEditAvatar,
+//   avatarPopup,
+// } from "../utils/constants.js";
 
-//импорт класса-утилиты Api
+// import Card from "../components/Card.js";
+// import FormValidator from "../components/FormValidator.js";
+// import Section from "../components/Section.js";
+// import PopupWithImage from "../components/PopupWithImage.js";
+// import PopupWithForm from "../components/PopupWithForm.js";
+// import UserInfo from "../components/UserInfo.js";
+// import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+// import Api from "../components/Api.js";
 
-
-// Функция создания карточек по экземпляру класса Card
+// Функция создания карточек по экземпляру класса Card //change
 function createCard(data) {
   const card = new Card(
     data,
@@ -41,169 +64,226 @@ function createCard(data) {
     userId,
     async () => {
       try {
-        const response = await api.putLike(data._id)
-        card.handleLikeButtonClick()
-        card.countLikes(response)
+        const response = await api.putLike(data._id);
+        card.handleLikeButtonClick();
+        card.countLikes(response);
       } catch (error) {
-        return console.log(`Ошибка: ${error}`)
+        return console.log(`Ошибка: ${error}`);
       }
     },
     async () => {
       try {
-        const response = await api.deleteLike(data._id)
-        card.dislike()
-        card.countLikes(response)
+        const response = await api.deleteLike(data._id);
+        card.dislike();
+        card.countLikes(response);
       } catch (error) {
-        return console.log(`Ошибка: ${error}`)
+        return console.log(`Ошибка: ${error}`);
       }
     },
     () => {
-      popupConfirmation.open(card)
+      popupConfirmation.open(card);
     }
-  )
+  );
 
-  return card.generateCard()
+  return card.generateCard();
 }
-
 //Открытие увеличенной картинки
 function openPopupImage(name, link) {
-  popupImage.open(name, link)
+  popupImage.open(name, link);
 }
+// function createCard(cardObject) {
+//   const card = new Card(
+  // cardObject,  
+  // ".card", 
+  // handleImageClick,
+  // userId,
+  // async () => {
+// try {
+//   const response = await api.putLike(data._id);
+// card.handleLikeButtonClick();
+// card.countLikes(response);
+//  } catch (error) {
+//   return console.log(`Ошибка: ${error}`);
+// }
+// },
+// async () => {
+//   try {
+//     const response = await api.deleteLike(data._id);
+//     card.dislike();
+//     card.countLikes(response);
+//   } catch (error) {
+//     return console.log(`Ошибка: ${error}`);
+//   }
+// },
+// () => {
+//   popupConfirmation.open(card);
+// }
+// );
+
+// return card.generateCard();
+// }
+
+
+//     handleDeleteButtonClick,
+//     handleLikeButtonClick,
+//   }, id);
+//   const newCard = card.generateCard();
+//   return newCard;
+// }
+
+// function renderCard(cardObject) {
+//   const cardElement = createCard(cardObject);
+//   section.addItem(cardElement);
+// }
+
+// // открыте popupZoom
+//     function handleImageClick (name, link) {
+//       popupZoom.open(name, link);
+//     }
 
 // Форма редактирования профиля
 async function handleSubmitFormEditProfile(profileData) {
   try {
-    const userProfile = await api.editProfile(profileData)
-    user.setUserInfo(userProfile)
+    const userProfile = await api.editProfile(profileData);
+    user.setUserInfo(userProfile);
   } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    return console.log(`Ошибка: ${error}`);
   }
 }
 
-// Форма обновления аватара
+// Форма обновления аватара //rename
 async function handleSubmitFormUpdateAvatar(data) {
   try {
-    const userProfile = await api.changeAvatar(data)
-    user.setUserInfo(userProfile)
+    const userProfile = await api.changeAvatar(data);
+    user.setUserInfo(userProfile);
   } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    return console.log(`Ошибка: ${error}`);
   }
 }
 
 // Форма добавления карточек
 async function handleSubmitFormAddCard(cardData) {
   try {
-    const newCard = await api.addNewCard(cardData)
-    cardList.addItem(createCard(newCard))
+    const newCard = await api.addNewCard(cardData);
+    cardList.addItem(createCard(newCard));
   } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    return console.log(`Ошибка: ${error}`);
   }
 }
 
 // Для каждого попапа создавайте свой экземпляр класса PopupWithForm
-const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
+const popupImage = new PopupWithImage(popupZoom); //no popup config
 popupImage.setEventListeners();
+
 const popupAdd = new PopupWithForm(
-  popupConfig.popupAddCardSelector,
+  popupAddCard,
   handleSubmitFormAddCard
-)
+);
 popupAdd.setEventListeners();
 
 const popupEdit = new PopupWithForm(
-  popupConfig.popupEditSelector,
+  editPopup,
   handleSubmitFormEditProfile
-)
+);
 popupEdit.setEventListeners();
 
 const popupAvatar = new PopupWithForm(
-  popupConfig.popupUpdateAvatarSelector,
+  avatarPopup,
   handleSubmitFormUpdateAvatar
-)
+);
 popupAvatar.setEventListeners();
 
 const user = new UserInfo({
   name: nameProfile,
   about: aboutProfile,
   avatar: avatarProfile,
-})
+});
 
 profileEditButton.addEventListener(
   "click",
   () => {
-    popupEdit.open()
-    popupEdit.setInputValue(user.getUserInfo())
-    validatorFormEditProfile.disableButton()
+    popupEdit.open();
+    popupEdit.setInputValue(user.getUserInfo());
+    validatorFormEditProfile.disableButton();
   },
   false
-)
+);
 
 profileUpdateAvatar.addEventListener(
   "click",
   () => {
-    popupAvatar.open()
-    validatorFormUpdateAvatar.disableButton()
+    popupAvatar.open();
+    validatorFormUpdateAvatar.disableButton();
   },
   false
-)
+);
 
 profileAddButton.addEventListener(
   "click",
   () => {
-    popupAdd.open()
-    validatorFormAddProfile.disableButton()
+    popupAdd.open();
+    validatorFormAddProfile.disableButton();
   },
   false
-)
+);
 
 // Для каждой проверяемой формы новый экземпляр класса FormValidator
 const validatorFormEditProfile = new FormValidator(
   validationConfig,
   formEditProfile
-)
+);
 
-validatorFormEditProfile.enableValidation()
+validatorFormEditProfile.enableValidation();
 
 const validatorFormAddProfile = new FormValidator(
   validationConfig,
   formAddProfile
-)
+);
 
-validatorFormAddProfile.enableValidation()
+validatorFormAddProfile.enableValidation();
 
 const validatorFormUpdateAvatar = new FormValidator(
   validationConfig,
   formUpdateAvatar
-)
+);
 
-validatorFormUpdateAvatar.enableValidation()
+validatorFormUpdateAvatar.enableValidation();
 
 const popupConfirmation = new PopupWithConfirmation(
-  popupConfig.popupDeleteSelector,
+  popupWithConfirmation,
   async (card) => {
     api
       .deleteCard(card._id)
       .then(() => {
-        card.remove()
-        popupConfirmation.close()
+        card.remove();
+        popupConfirmation.close();
       })
-      .catch((error) => console.log(`Ошибка: ${error}`))
+      .catch((error) => console.log(`Ошибка: ${error}`));
   }
-)
+);
 popupConfirmation.setEventListeners();
 
 // Загружка карточек с сервера
 const cardList = new Section(
   {
     renderer: (data) => {
-      const card = createCard(data)
+      const card = createCard(data);
 
-      cardList.addItem(card)
+      cardList.addItem(card);
     },
   },
   ".elements"
-)
+);
 
-console.log()
+// const section = new Section(
+//   {
+//     renderer: (cardObject) => {
+//       section.addItem(createCard(cardObject));
+//     },
+//   },
+//   ".elements"
+// );
+// section.renderItems(cardObject.reverse());
 
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-65",
@@ -216,14 +296,26 @@ const api = new Api({
 // Отрисовка карточек с сервера + отрисовка данных пользователя
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userProfile, cards]) => {
-    user.setUserInfo(userProfile)
-    userId = userProfile._id
-    cardList.renderItems(cards)
+    user.setUserInfo(userProfile);
+    userId = userProfile._id;
+    cardList.renderItems(cards);
   })
 
-  .catch((error) => console.log(`Ошибка: ${error}`))
-  
-  // import "./index.css";
+  .catch((error) => console.log(`Ошибка: ${error}`));
+
+  // Promise.all([api.getUserData(), api.getInitialCards()])
+//   .then(([userProfileData, cardObject]) => {
+//     userInfo.setUserInfo({
+//       userNameElement: userProfileData.name,
+//       userInfoElement: userProfileData.about,
+//     });
+//     section.renderItems(cardObject.reverse());
+//   })
+//   .catch((error) => {
+//     console.log(`Ошибка: ${error}`);
+//   });
+
+// import "./index.css";
 // import {
 //   cards,
 //   config,
@@ -272,8 +364,6 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 //   const cardElement = createCard(cardObject);
 //   section.addItem(cardElement);
 // }
-
-
 
 // function openEditProfile() {
 //   const { userNameElement, userInfoElement } = userInfo.getUserInfo();

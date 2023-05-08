@@ -36,7 +36,7 @@ export default class UserInfo {
     }
   }
 }
-// export class UserInfo {
+// export default class UserInfo {
 //   constructor({ userNameSelector, userInfoSelector, avatarSelector }) {
 //     this._userNameElement = document.querySelector(userNameSelector);
 //     this._userInfoElement = document.querySelector(userInfoSelector);
@@ -44,15 +44,15 @@ export default class UserInfo {
 //   }
 
 //   getUserInfo() {
-//     return {
-//       userNameElement: this._userNameElement.textContent,
-//       userInfoElement: this._userInfoElement.textContent,
+//     return this._profileData = {
+//       name: this._userNameElement.textContent,
+//       about: this._userInfoElement.textContent,
 //     };
 //   }
 
-//   setUserInfo(userNameElement, userInfoElement, avatarElement) {
-//     this._userNameElement.textContent = userNameElement;
-//     this._userInfoElement.textContent = userInfoElement;
-//     this._avatarElement.src = avatarElement;
+//   setUserInfo( name, about, avatar ) {
+//     this._userNameElement.textContent = name;
+//     this._userInfoElement.textContent = about;
+//     this._avatarElement.src = avatar;
 //   }
 // }
