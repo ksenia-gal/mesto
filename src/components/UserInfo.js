@@ -1,6 +1,6 @@
 export default class UserInfo {
   constructor({ name, about, avatar }) {
-    this._data = {
+    this._userData = {
       name: name.textContent,
       about: about.textContent,
       avatar: avatar.textContent
@@ -12,47 +12,27 @@ export default class UserInfo {
 
   getUserInfo() {
     return {
-      name: this._data.name,
-      about: this._data.about,
-      avatar: this._data.avatar,
+      name: this._userData.name,
+      about: this._userData.about,
+      avatar: this._userData.avatar,
     }
   }
 
   setUserInfo(data) {
-    this._data.name = data.name
-    this._data.about = data.about
-    this._data.avatar = data.avatar
+    this._userData.name = data.name
+    this._userData.about = data.about
+    this._userData.avatar = data.avatar
     if (data.name) {
-      this._name.textContent = this._data.name
+      this._name.textContent = this._userData.name
     }
 
     if (data.about) {
-      this._about.textContent = this._data.about
+      this._about.textContent = this._userData.about
     }
 
     if (data.avatar) {
-      this._avatar.src = this._data.avatar
-      this._avatar.alt = this._data.name
+      this._avatar.src = this._userData.avatar
+      this._avatar.alt = this._userData.name
     }
   }
 }
-// export default class UserInfo {
-//   constructor({ userNameSelector, userInfoSelector, avatarSelector }) {
-//     this._userNameElement = document.querySelector(userNameSelector);
-//     this._userInfoElement = document.querySelector(userInfoSelector);
-//     this._avatarElement = document.querySelector(avatarSelector);
-//   }
-
-//   getUserInfo() {
-//     return this._profileData = {
-//       name: this._userNameElement.textContent,
-//       about: this._userInfoElement.textContent,
-//     };
-//   }
-
-//   setUserInfo( name, about, avatar ) {
-//     this._userNameElement.textContent = name;
-//     this._userInfoElement.textContent = about;
-//     this._avatarElement.src = avatar;
-//   }
-// }
