@@ -4,14 +4,14 @@ export default class Card {
     cardTemplateSelector,
     handleImageClick,
     userId,
-    handleLikeButtonClick,
+    addLike,
     dislike,
     handleDeleteButtonClick
   ) {
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleImageClick = handleImageClick;
     this._userId = userId;
-    this._handleLikeButtonClick = handleLikeButtonClick;
+    this._addLike = addLike;
     this._dislike = dislike;
     this._handleDeleteButtonClick = handleDeleteButtonClick;
     this._likes = cardObject.likes;
@@ -29,7 +29,7 @@ export default class Card {
     return cardElement;
   }
 
-  handleLikeButtonClick() {
+  addLike() {
     this._likeButton.classList.add("element__like-button_active");
   }
 
@@ -40,7 +40,7 @@ export default class Card {
   _likedCard() {
     this._likes.forEach((elementId) => {
       if (elementId._id === this._userId) {
-        this.handleLikeButtonClick();
+        this.addLike();
       } else {
         this.dislike();
       }
@@ -79,7 +79,7 @@ export default class Card {
       if (this._likeButton.classList.contains("element__like-button_active")) {
         this._dislike();
       } else {
-        this._handleLikeButtonClick();
+        this._addLike();
       }
     });
     this._deleteButton.addEventListener("click", () => {

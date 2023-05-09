@@ -36,7 +36,7 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.putLike(data._id);
-        card.handleLikeButtonClick();
+        card.addLike();
         card.countLikes(response);
       } catch (error) {
         return console.log(`Ошибка: ${error}`);

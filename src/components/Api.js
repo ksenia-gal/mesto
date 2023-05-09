@@ -5,7 +5,7 @@ export default class Api {
   }
 
   // обработка ответа сервера
-  _serverResponse(res) {
+  _checkResponse(res) {
     if (res.ok) {
       return Promise.resolve(res.json());
     } else {
@@ -18,7 +18,7 @@ export default class Api {
     const response = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 
   // загрузка карточек с сервера
@@ -26,7 +26,7 @@ export default class Api {
     const response = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 
   // редактирование профиля
@@ -39,7 +39,7 @@ export default class Api {
         about: profileData.about,
       }),
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 
   // добавление новой карточки
@@ -49,7 +49,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify(cardData),
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 
   // постановка и удаление лайка
@@ -58,14 +58,14 @@ export default class Api {
       method: "PUT",
       headers: this._headers,
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
   async deleteLike(cardId) {
     const response = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
   // удаление карточки
   async deleteCard(cardId) {
@@ -73,7 +73,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 
   // обновление аватара пользователя
@@ -85,6 +85,6 @@ export default class Api {
         avatar: data.avatar,
       }),
     });
-    return this._serverResponse(response);
+    return this._checkResponse(response);
   }
 }
