@@ -8,6 +8,7 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
+    super.setEventListeners();
     this._form.addEventListener("submit", (event) => {
       event.preventDefault();
       const buttonTextReplacement = event.submitter.textContent;
